@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import SearchBar from './SearchBar'
+import SearchBar from './components/SearchBar'
 
 function Dodge() {
   return (
