@@ -2,6 +2,10 @@
   margin-left: 20px;
 } */
 
+body {
+  margin: 0;
+}
+
 .header {
   margin-left: 2rem;
   padding-top: 3rem;
@@ -110,4 +114,4 @@
 }
 .bottom-tab-label {
   font-size: 12px;
-}
+} 
