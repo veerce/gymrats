@@ -103,7 +103,7 @@ body {
   border-bottom: solid 1px #EBEBEB;
 }
 .bottom-tab-nav {
-  border-top: solid 1px #EBEBEB;
+  border-top: solid 0px #EBEBEB;
 }
 .nav-link,
 .bottom-nav-link {
