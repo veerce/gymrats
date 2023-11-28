@@ -9,13 +9,14 @@ import Profile from './pages/Profile';
 import Navigation from './components/Navigation';
 
 function App() {
+  let user = "Veer"
   return (
     <div>
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home username={user}/>} />
+          <Route path="/home" element={<Home username={user}/>} />
           <Route path="/occupancy" element={<Occupancy />} />
           <Route path="/startworkout" element={<StartWorkout />} />
           <Route path="/notes" element={<Notes />} />
