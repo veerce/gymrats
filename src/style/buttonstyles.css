@@ -1,0 +1,70 @@
+#default_A {
+    background-color: #BFE9FF;
+    border: none;
+    width: 350px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 25px;
+    color: black;
+}
+
+#standard_workout_style {
+    background-color: white;
+    width: 350px;
+    height: 100px;
+    border: none;
+}
+
+#inner-div {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    border: none;
+}
+  
+#inner-div-left {
+    display: flex; /* Turn div into a flex container */
+    background-color: white;
+    width: 30%;
+    border: none;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+}
+  
+#inner-div-right {
+    background-color: white; /* Changed color for demonstration */
+    width: 70%;
+    border: none;
+}
+
+#inner_div_datetime {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    background-color: white;
+    height: 50%;
+    border: none;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: "Inter-Regular", "Helvetica";
+    font-style: italic;
+    font-weight: 500;
+}
+  
+
+#inner_div_length {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    background-color: white;
+    height: 50%;
+    border: none;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: "Inter-Regular", "Helvetica";
+    font-style: italic;
+    font-weight: 500;
+}
