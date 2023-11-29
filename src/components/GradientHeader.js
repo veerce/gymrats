@@ -6,7 +6,7 @@ const GradientHeader = ({title}) => {
         <div id="header">
             <div id="top_bar"></div>
             <div id="gradient">
-            <div className="overlay-text">{title}</div>
+                <div className="overlay-text">{title}</div>
             </div>
         </div>
     )
