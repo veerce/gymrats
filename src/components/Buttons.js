@@ -21,11 +21,42 @@ export const WorkoutLink = ({ datetime, length }) => {
                 <FontAwesomeIcon icon={faDumbbell} size="4x" style={{color: "#000000",}}/>
             </div>
           <div id="inner-div-right">
-            <div id="inner_div_datetime">{datetime}</div>
-            <div id="inner_div_length">{length}</div>
+            <div className="inner_div_datetime">{datetime}</div>
+            <div className="inner_div_datetime">{length}</div>
           </div>
         </div>
       </button>
     );
+}
+
+export const OccupancyQuickView = ({gym_name, open, hours, occ}) => {
+  let open_status = "CLOSED";
+  let status_style = "closed";
+  if (open==="True") {
+    open_status = "OPEN";
+    status_style = "open";
+  }
+
+  return (
+    <button type="button" id="occ_quick_view" className="btn btn-secondary">
+      <div id="gym_info">
+        <div id="gym_name" className="subsection">{gym_name}</div>
+        <div className="subsection">
+          <div id={`${status_style}`}>{open_status}</div>
+          <div id="hours">{hours}</div>
+        </div>
+      </div>
+      <div id="percentage">
+        <div className="circle">{occ}</div>
+      </div>
+    </button>
+    
+  )
+}
+
+export const AddGym = () => {
+  return {
+
+  }
 }
 

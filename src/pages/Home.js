@@ -1,18 +1,17 @@
 import React from 'react';
-import "../style/gradient.css";
 import "../style/homestyles.css";
 import GradientHeader from '../components/GradientHeader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {StandardButton, WorkoutLink} from '../components/Buttons.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFireFlameCurved, faTrophy, faMedal} from '@fortawesome/free-solid-svg-icons';
 
 
 const Home = ({username}) => {
   let display_title = 'Welcome back, ' + username
   return (
-    <div className="container">
+    <div className="container g-0">
       <GradientHeader title={display_title} />
       <GetStarted />
       <Achievements />
@@ -74,7 +73,7 @@ const RecentWorkouts = () => {
     <div id="achievements">
       <div id="text_box">Recent Workouts</div>
       <div id="previous_workouts">
-        <WorkoutLink datetime="Oct 29, 2023 2:10 PM" length="20:15 minutes" />
+        <WorkoutLink datetime="Oct 29, 2023 2:10 PM" length="20:15 mins" />
       </div>
     </div>
   )
