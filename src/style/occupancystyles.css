@@ -15,6 +15,11 @@
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */
     padding: 5px;
-    max-height: 70%; /* Set a maximum height for the container */
     overflow-y: scroll; /* Enable vertical scrollbar when content overflows */
+}
+
+#add_button {
+    position: fixed;
+    bottom: 100px; /* Adjust distance from the bottom */
+    right: 25px; /* Adjust distance from the right */
 }

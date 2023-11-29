@@ -120,7 +120,6 @@
 }
 
 #open {
-    width: 25%;
     height: 100%;
     color: green;
     font-size: 20px;
@@ -130,7 +129,6 @@
 }
 
 #closed {
-    width: 25%;
     height: 100%;
     color: red;
     font-size: 20px;
@@ -140,24 +138,23 @@
 }
 
 #hours {
-    width: 75%;
     height: 100%;
     color: black;
     font-size: 20px;
     font-family: "Inter-Regular", "Helvetica";
     font-weight: 300;
-    text-align: right; /* Align text to the left */
-    letter-spacing: 3px; /* Increase letter spacing */
-    padding-right: 15px;
+    text-align: left; /* Align text to the left */
+    letter-spacing: 2px; /* Increase letter spacing */
+    padding-left: 10px;
 }
 
-#add_gym {
+#add_gym_button {
     width: 65px; /* Set width and height for the circle */
     height: 65px;
     background-color: #BFE9FF; /* Change background color as desired */
     border-radius: 50%; /* Makes the element a circle */
-    color: #FF6B2B;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
 }
