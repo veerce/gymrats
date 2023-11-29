@@ -54,9 +54,9 @@ export const OccupancyQuickView = ({gym_name, open, hours, occ}) => {
   )
 }
 
-export const AddGym = () => {
+export const AddGym = ({onClick}) => {
   return (
-    <button type="button" class="btn btn-default" id="add_gym_button">
+    <button type="button" className="btn btn-default" id="add_gym_button" onClick={onClick}>
       <FontAwesomeIcon icon={faPlus} style={{color: "#FF6B2B",}} size="2x" />
     </button>
   )
