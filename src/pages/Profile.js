@@ -30,27 +30,23 @@ const Profile = ({ username }) => {
 const CalendarObj = () => {
   const [date, setDate] = useState(new Date());
   const [workoutDays, setWorkoutDays] = useState([
-    'Tue Nov 21 2023', // Replace with an actual date string
-    'Fri Nov 24 2023', // Replace with an actual date string
-    'Sun Nov 26 2023', // Replace with an actual date string
+    'Tue Nov 21 2023', 
+    'Fri Nov 24 2023', 
+    'Sun Nov 26 2023', 
   ]);
 
-  // Function to handle workout day selection
   const handleDateClick = (clickedDate) => {
     const dateString = clickedDate.toDateString();
 
     if (workoutDays.includes(dateString)) {
-      // Navigate to the workout details page
       window.location.href = `/workout-details/${dateString}`;
     } else {
       setWorkoutDays([...workoutDays, dateString]);
     }
   };
 
-  // Function to determine if a date is a workout day
   const isWorkoutDay = (day) => workoutDays.includes(day.toDateString());
 
-  // Function to customize the class names for each calendar day
   const tileClassName = ({ date }) => {
     return isWorkoutDay(date) ? 'workout-day' : '';
   };
