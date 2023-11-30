@@ -4,6 +4,7 @@ import GradientHeader from '../components/GradientHeader';
 import {OccupancyQuickView, AddGym} from '../components/Buttons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import SearchBar from '../components/SearchBar';
 
 const Occupancy = () => {
   const [searchPage, setSearchPage] = useState(false);
@@ -37,9 +38,9 @@ export const OccupancyHome = () => {
 export const OccupancySearch = (props) => {
   // this is occupancy search page
   return (
-    <div id="saved_gyms">
-      
-    </div>
+      <div id="white_box">
+        <SearchBar/>
+      </div>
   )
 
 }

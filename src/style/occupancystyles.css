@@ -7,6 +7,7 @@
     flex-direction: column;
     background-color: #F8F7F7;
     position: relative;
+    align-items: center; /* Vertically center */
 }
 
 #saved_gyms {
@@ -22,4 +23,12 @@
     position: fixed;
     bottom: 100px; /* Adjust distance from the bottom */
     right: 25px; /* Adjust distance from the right */
+}
+
+#white_box {
+    width: 95%;
+    height: 79%;
+    background: black;
+    border-radius: 30px;
+    margin: 0 auto; /* Center horizontally */
 }

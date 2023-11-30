@@ -1,4 +1,5 @@
-import './App.css';
+import React from 'react';
+import '../style/searchbarstyles.css';
 
 function SearchBar() {
     return (

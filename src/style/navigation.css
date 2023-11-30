@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+  }
+  
+  .header {
+    margin-left: 2rem;
+    padding-top: 3rem;
+    font-size: 32px;
+  }
+  
+  .subheader {
+    margin-left: 2rem;
+    padding-top: 1rem;
+    font-size: 25px;
+  }
+  
+  .navbar {
+    border-bottom: solid 1px #EBEBEB;
+  }
+
+  .bottom-tab-nav {
+    border-top: solid 0px #EBEBEB;
+  }
+
+  .nav-link,
+  .bottom-nav-link {
+    color: #CED7D2;
+  }
+
+  .bottom-nav-link.active {
+    color: #FF6B2B;
+  }
+
+  .bottom-tab-label {
+    font-size: 12px;
+    color: #5A5A5A;
+  } 
