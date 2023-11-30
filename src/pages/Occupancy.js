@@ -39,7 +39,7 @@ export const OccupancySearch = (props) => {
   // this is occupancy search page
   return (
       <div id="white_box">
-        <SearchBar/>
+        <SearchBar placeholder_text="Search for a gym"/>
       </div>
   )
 

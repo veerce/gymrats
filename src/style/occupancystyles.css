@@ -27,8 +27,10 @@
 
 #white_box {
     width: 95%;
-    height: 79%;
-    background: black;
+    height: 77%;
+    background: white;
     border-radius: 30px;
     margin: 0 auto; /* Center horizontally */
+    display: flex;
+    justify-content: center; /* Horizontally center */
 }
