@@ -8,6 +8,17 @@
     color: black;
 }
 
+.custom-orange-button {
+    background-color: #FF6B2B;
+    border: none;
+    width: 350px;
+    height: 50px;
+    font-weight: 450;
+    font-size: 22px;
+    color: white;
+    border-radius: 5px;
+}
+
 #standard_workout_style {
     background-color: white;
     width: 350px;

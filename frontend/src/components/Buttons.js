@@ -13,6 +13,14 @@ export const StandardButton = ({ text }) => { // Destructure text from props
     )
 }
 
+export const OrangeButton = ({ text }) => {
+  return (
+    <div id="start_workout">
+      <button type="button" className="custom-orange-button">{text}</button>
+    </div>
+  );
+};
+
 export const WorkoutLink = ({ datetime, length }) => {
     return (
       <button type="button" id="standard_workout_style" className="btn btn-secondary">
