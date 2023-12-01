@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../style/buttonstyles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDumbbell, faPlus, faChevronRight, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faDumbbell, faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import ProgressBar from './ProgressBar';
 import DailyCapacityTrends from '../components/BarChart';
 
