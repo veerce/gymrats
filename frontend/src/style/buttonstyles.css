@@ -69,6 +69,37 @@
     border-radius: 10px;
 }
 
+#occ_curr {
+    /* display: flex; */
+    justify-content: center;
+    background-color:#FFFFFF;
+    width: 400px;
+    height: 200px;
+    margin: 15px;
+    padding: 0;
+    border: none;  
+    border-radius: 10px;
+}
+
+
+#occ_curr_title {
+    color: black;
+    font-size: 20px;
+    font-family: "Inter-Regular", "Helvetica";
+    font-weight: 400;
+    padding-top: 20px;
+
+}
+
+#occ_curr_number {
+    color: black;
+    font-size: 50px;
+    font-family: "Inter-Regular", "Helvetica";
+    font-weight: 400;
+}
+
+
+
 #gym_info {
     width: 75%;
     height: 100%;

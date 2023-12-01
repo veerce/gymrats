@@ -7,6 +7,7 @@ import StartWorkout from './pages/StartWorkout';
 import Notes from './pages/Notes';
 import Profile from './pages/Profile';
 import Navigation from './components/Navigation';
+import OccupancyDetails from './pages/OccupancyDetails';
 import { useState, useEffect } from "react";
 
 // react and flask connection code from 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/" element={<Home username={data.name}/>} />
         <Route path="/home" element={<Home username={data.name}/>} />
         <Route path="/occupancy" element={<Occupancy />} />
+        <Route path="/occupancydetails" element={<OccupancyDetails />}/>
         <Route path="/startworkout" element={<StartWorkout />} />
         <Route path="/notes" element={<Notes />} />
         <Route path="/profile" element={<Profile />} />

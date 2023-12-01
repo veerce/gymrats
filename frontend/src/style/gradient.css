@@ -41,3 +41,12 @@ body {
     right: 0; /* Align to the right edge of the parent */
     line-height: 1; /* Adjust line height */
 }
+
+.subheader-text {
+    font-size: 20px;
+    color:#19b000;
+    margin-top: 10px;
+    text-align:left;
+    margin-left: 15px;
+
+}

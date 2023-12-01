@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "../style/buttonstyles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell, faPlus } from '@fortawesome/free-solid-svg-icons';
+import ProgressBar from './ProgressBar';
 
 
 export const StandardButton = ({ text }) => { // Destructure text from props
@@ -29,7 +30,7 @@ export const WorkoutLink = ({ datetime, length }) => {
     );
 }
 
-export const OccupancyQuickView = ({gym_name, open, hours, occ}) => {
+export const OccupancyQuickView = ({gym_name, open, hours, occ, onClick}) => {
   let open_status = "CLOSED";
   let status_style = "closed";
   if (open==="True") {
@@ -38,7 +39,7 @@ export const OccupancyQuickView = ({gym_name, open, hours, occ}) => {
   }
 
   return (
-    <button type="button" id="occ_quick_view" className="btn btn-secondary">
+    <button type="button" id="occ_quick_view" className="btn btn-secondary" onClick={onClick}>
       <div id="gym_info">
         <div id="gym_name" className="subsection">{gym_name}</div>
         <div className="subsection">
@@ -59,5 +60,23 @@ export const AddGym = ({onClick}) => {
     <button type="button" className="btn btn-default" id="add_gym_button" onClick={onClick}>
       <FontAwesomeIcon icon={faPlus} style={{color: "#FF6B2B",}} size="2x" />
     </button>
+  )
+}
+
+
+export const CurrentOccupancy = ({occ, onClick}) => {
+
+  return (
+    <button type="button" id="occ_curr" onClick={onClick}>
+        <div id="occ_curr_title">Current Occupancy</div>
+        <div id="occ_curr_number">
+          {occ}%  
+        </div>
+        <ProgressBar percentage={occ} />
+        
+
+  
+    </button>
+    
   )
 }
