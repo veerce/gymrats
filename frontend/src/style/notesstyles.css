@@ -1,0 +1,11 @@
+.container {
+    width: 100%;
+    height: 92vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8F7F7;
+    position: relative;
+    align-items: center; /* Vertically center */
+}

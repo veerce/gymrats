@@ -1,16 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../style/buttonstyles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDumbbell, faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faDumbbell, faPlus, faChevronRight, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import ProgressBar from './ProgressBar';
 import DailyCapacityTrends from '../components/BarChart';
 
 
-export const StandardButton = ({ text }) => { // Destructure text from props
-
+export const StandardButton = ({ text }) => {
     return (
-        <div id="start_workout">
-            <button type="button" id="default_A" className="btn btn-secondary">{text}</button> {/* Use className instead of class */}
+        <div>
+            <button type="button" id="default_A" className="btn btn-secondary">{text}</button> 
         </div>
     )
 }
@@ -136,3 +135,30 @@ export const ViewOccupancyButton = ({title, onClick}) => {
       </div>
   )
 }
+
+export const NotesButton = ({title, onClick}) => { 
+  return (
+      <div id="note_button">
+          <button type="button" id="default_B" className="btn btn-secondary" onClick={onClick}>
+            <span>{title}</span>
+            <FontAwesomeIcon icon={faChevronRight} style={{color: "#000000",}} />
+          </button>
+      </div>
+  )
+}
+
+export const AddNote = ({onClick}) => {
+  return (
+    <button type="button" className="btn btn-default" id="add_note_button" onClick={onClick}>
+      <FontAwesomeIcon icon={faPlus} style={{color: "#FF6B2B",}} size="2x" />
+    </button>
+  )
+}
+
+export const OrangeButton = ({ text }) => {
+  return (
+    <div id="start_workout">
+      <button type="button" className="custom-orange-button">{text}</button>
+    </div>
+  );
+};

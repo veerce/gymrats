@@ -73,12 +73,12 @@
     background-color: white;
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */
+    border-radius: 10px;
   }
 
 .icon {
     padding-top: 20px;
 }
-  
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .badge_title {
