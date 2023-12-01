@@ -18,7 +18,7 @@
 
 - Run the frontend: `npm start`
 
-- If there are issues with packages not being installed, ensure that all of the packages are installed using: `npm install`
+- If there are issues with packages not being installed or files not being found, ensure that all of the packages are installed using: `npm install`
 
 4. View the prototype
 
