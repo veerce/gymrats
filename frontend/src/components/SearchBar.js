@@ -13,13 +13,13 @@ function SearchBar({placeholder_text}) {
     };
 
     return (
-        <div class="searchbox">
-            <div class="search-container">
+        <div className="searchbox">
+            <div className="search-container">
                 <div id="magnifying_glass">
                     <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#000000",}} size="1x"/>
                 </div>
-                <div class="search-input">
-                    <input class="input-text" placeholder={placeholder_text} onKeyPress={handleInputChange}/>
+                <div className="search-input">
+                    <input className="input-text" placeholder={placeholder_text} onKeyPress={handleInputChange}/>
                 </div>
             </div>
         </div>
