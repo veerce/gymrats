@@ -1,5 +1,5 @@
 .progress-bar {
-    max-width: 350px;
+    max-width: 330px;
     width: 100%; 
     background-color: #ddd; 
     border-radius: 10px; 
@@ -13,3 +13,4 @@
     border-radius: 10px 0 0 10px; 
     transition: width 0.5s ease-in-out; 
 }
+

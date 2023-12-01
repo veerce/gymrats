@@ -73,7 +73,7 @@
     /* display: flex; */
     justify-content: center;
     background-color:#FFFFFF;
-    width: 400px;
+    width: 350px;
     height: 200px;
     margin: 15px;
     padding: 0;
@@ -96,6 +96,12 @@
     font-size: 50px;
     font-family: "Inter-Regular", "Helvetica";
     font-weight: 400;
+}
+
+#occ_curr_sub {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
 }
 
 
@@ -189,3 +195,22 @@
     align-items: center;
     border: none;
 }
+
+#view_equipment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #BFE9FF;
+    border: none;
+    width: 350px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+    border-radius: 10px;
+    padding: 0 10px;
+    text-align: left;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
