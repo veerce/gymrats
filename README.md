@@ -12,6 +12,8 @@
 
 3. Start the frontend
 
+- Open a new terminal instance
+
 - Go back to the gymrats directory `cd ..`
 
 - Enter the frontend directory: `cd frontend`
