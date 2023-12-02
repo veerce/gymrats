@@ -16,7 +16,7 @@ const tabs = [{
   },{
     route: "/startworkout",
     icon: faPlay,
-    label: "StartWorkout"
+    label: "Workout"
   },{
     route: "/notes",
     icon: faClipboard,

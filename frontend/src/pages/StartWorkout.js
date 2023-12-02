@@ -59,7 +59,7 @@ const CheckAvailability = ({CheckAvailability}) => {
   return (
     <div id="CheckAvailability" className="button-container">
       <div id="check_availability">
-        <StandardButton text="Check Equipment Availability  >"/>
+        <StandardButton text="Check Equipment Availability"/>
       </div>
     </div>
   );

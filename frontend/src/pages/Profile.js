@@ -9,7 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import WorkoutDetails from './WorkoutDetails.js';
 
-import { StandardButton, WorkoutLink } from '../components/Buttons.js';
+import { WorkoutLink } from '../components/Buttons.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFireFlameCurved, faTrophy, faMedal } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,6 +23,7 @@ const Profile = ({ username }) => {
         <Route path="/" element={<CalendarObj />} />
         <Route path="/workout-details/:date" element={<WorkoutDetails />} />
       </Routes>
+      <PreviousWorkouts />
     </div>
   );
 };
@@ -53,7 +54,6 @@ const CalendarObj = () => {
 
   return (
     <div className="app">
-      <h1 className="header">Workout Calendar</h1>
       <div className="calendar-container">
         <Calendar
             onChange={setDate}
@@ -62,12 +62,22 @@ const CalendarObj = () => {
             tileClassName={tileClassName}
           />
       </div>
-      <div className="text-center">
+      <div className="text-center" style={{padding:10}}>
         Selected date: {date.toDateString()}
       </div>
     </div>
   );
 };
+
+const PreviousWorkouts = () => {
+  return (
+    <div id="achievements">
+      <div id="previous_workouts" style={{padding:5}}>
+        <WorkoutLink datetime="Oct 29, 2023 2:10 PM" length="20:15 mins" />
+      </div>
+    </div>
+  )
+}
 
 export default Profile;
 
