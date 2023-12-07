@@ -9,7 +9,7 @@ import {faFireFlameCurved, faTrophy, faMedal} from '@fortawesome/free-solid-svg-
 
 
 const Home = ({username}) => {
-  let display_title = 'Welcome back, ' + username
+  let display_title = 'Welcome back, Veer' + username
   return (
     <div className="container g-0">
       <BasicHeader title={display_title} />

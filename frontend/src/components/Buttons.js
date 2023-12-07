@@ -161,4 +161,14 @@ export const OrangeButton = ({ text, onClick }) => {
       {text}
     </button>
   );
-};
+}
+
+export const StartWorkoutButton = ({ text, onClick }) => {
+  return (
+    <button className="startworkout-button" onClick={onClick}>
+      {text}
+    </button>
+  );
+}
+
+;

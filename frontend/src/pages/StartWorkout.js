@@ -4,7 +4,7 @@ import "../style/buttonstyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom'; 
 
-import { StandardButton, OrangeButton } from '../components/Buttons.js';
+import { StandardButton, StartWorkoutButton } from '../components/Buttons.js';
 import BasicHeader from '../components/BasicHeader';
 import VectorImageSrc from '../images/phone_NFC.png';
 
@@ -67,17 +67,16 @@ const CheckAvailability = ({CheckAvailability}) => {
 }
 
 const StartThisWorkout = () => {
-  const navigate = useNavigate();  // Add this line
+  const navigate = useNavigate();
 
   const handleStartWorkout = () => {
-    // Use navigate to route to /workout-details
     navigate('/workout-details');
   };
 
   return (
     <div id="StartThisWorkout" className="button-container">
       <div id="start_this_workout">
-        <OrangeButton text="START WORKOUT" onClick={handleStartWorkout} />
+        <StartWorkoutButton text="START WORKOUT" onClick={handleStartWorkout} />
       </div>
     </div>
   );

@@ -9,15 +9,19 @@
     border-radius: 10px;
 }
 
-.custom-orange-button {
-    background-color: #FF6B2B;
-    border: none;
+.startworkout-button {
+    background-color: #BCFF31;
     width: 350px;
     height: 50px;
-    font-weight: 450;
+    font-weight: bold;
     font-size: 22px;
-    color: white;
+    font-family: "Inter-Medium", "Bariol";
+    text-align: center;
+    color: #131738;
     border-radius: 5px;
+    border-color: #FFFFFF;
+    border-width: 2px;
+    border-style: solid;
 }
 
 #standard_workout_style {
