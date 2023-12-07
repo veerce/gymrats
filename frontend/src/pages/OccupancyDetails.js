@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/occupancystyles.css';
-import GradientHeader from '../components/GradientHeader';
+import BasicHeader from '../components/BasicHeader';
 import {OccupancyQuickView, AddGym} from '../components/Buttons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
@@ -44,7 +44,7 @@ const OccupancyDetails = () => {
     console.log("State: ", yourData);
     return (
         <div className="container">
-          <GradientHeader title="Dodge Fitness Center" subheader="OPEN 6AM - 12AM"/>  
+          <BasicHeader title="Dodge Fitness Center" subheader="OPEN 6AM - 12AM"/>  
           <CurrentOccupancy occ="70" />
           <ViewOccupancyButton title="View Occupancy by Equipment" onClick={handleEquipmentCLick}/>
           <div>

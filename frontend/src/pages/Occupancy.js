@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/occupancystyles.css';
-import GradientHeader from '../components/GradientHeader';
+import BasicHeader from '../components/BasicHeader';
 import {OccupancyQuickView, AddGym} from '../components/Buttons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
@@ -17,7 +17,7 @@ const Occupancy = () => {
 
   return (
     <div className="container">
-      <GradientHeader title="Your Gyms"/>
+      <BasicHeader title="Your Gyms"/>
       {searchPage ? <OccupancySearch /> : <OccupancyHome />}     
       <div id="add_button">
         <AddGym onClick={handleAddGymClick}/>

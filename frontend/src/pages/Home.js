@@ -1,6 +1,6 @@
 import React from 'react';
 import "../style/homestyles.css";
-import GradientHeader from '../components/GradientHeader';
+import BasicHeader from '../components/BasicHeader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {StandardButton, WorkoutLink} from '../components/Buttons.js';
@@ -12,7 +12,7 @@ const Home = ({username}) => {
   let display_title = 'Welcome back, ' + username
   return (
     <div className="container g-0">
-      <GradientHeader title={display_title} />
+      <BasicHeader title={display_title} />
       <GetStarted />
       <Achievements />
       <RecentWorkouts />

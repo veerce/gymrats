@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/notesstyles.css';
-import GradientHeader from '../components/GradientHeader';
+import BasicHeader from '../components/BasicHeader';
 import {NotesButton, AddNote} from '../components/Buttons';
 
 const Notes = () => {
@@ -15,7 +15,7 @@ const Notes = () => {
 
 return (
   <div className="container">
-    <GradientHeader title="Notes"/>
+    <BasicHeader title="Notes"/>
     <NotesButton title="Ab Workout" onClick={handleNoteCLick}/>
     <NotesButton title="2024 Goals" onClick={handleNoteCLick}/>
     <NotesButton title="Feedback from trainer" onClick={handleNoteCLick}/>

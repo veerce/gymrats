@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
 import "../style/homestyles.css";
-import GradientHeader from '../components/GradientHeader';
+import BasicHeader from '../components/BasicHeader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/calendar.css'
 import { Route, Routes } from 'react-router-dom';
@@ -17,7 +17,7 @@ const Profile = ({ username }) => {
   let display_title = 'Previous Workouts';
   return (
     <div className="container g-0">
-      <GradientHeader title={display_title} />
+      <BasicHeader title={display_title} />
       <SearchBar />
       <Routes>
         <Route path="/" element={<CalendarObj />} />
