@@ -2,9 +2,10 @@ import React from 'react';
 import "../style/startstyles.css";
 import "../style/buttonstyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom'; 
 
 import { StandardButton, OrangeButton } from '../components/Buttons.js';
-import GradientHeader from '../components/GradientHeader';
+import BasicHeader from '../components/BasicHeader';
 import VectorImageSrc from '../images/phone_NFC.png';
 
 const StartWorkout = ({ username }) => {
@@ -12,7 +13,7 @@ const StartWorkout = ({ username }) => {
 
   return (
     <div className="container start_workout">
-      <GradientHeader title={display_title} />
+      <BasicHeader title={display_title} />
       <Instructions />
       <CheckAvailability />
       <StartThisWorkout />
@@ -65,11 +66,18 @@ const CheckAvailability = ({CheckAvailability}) => {
   );
 }
 
-const StartThisWorkout = ({StartThisWorkout}) => {
+const StartThisWorkout = () => {
+  const navigate = useNavigate();  // Add this line
+
+  const handleStartWorkout = () => {
+    // Use navigate to route to /workout-details
+    navigate('/workout-details');
+  };
+
   return (
     <div id="StartThisWorkout" className="button-container">
       <div id="start_this_workout">
-        <OrangeButton text="START WORKOUT"/>
+        <OrangeButton text="START WORKOUT" onClick={handleStartWorkout} />
       </div>
     </div>
   );

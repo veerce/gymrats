@@ -155,10 +155,10 @@ export const AddNote = ({onClick}) => {
   )
 }
 
-export const OrangeButton = ({ text }) => {
+export const OrangeButton = ({ text, onClick }) => {
   return (
-    <div id="start_workout">
-      <button type="button" className="custom-orange-button">{text}</button>
-    </div>
+    <button className="orange-button" onClick={onClick}>
+      {text}
+    </button>
   );
 };

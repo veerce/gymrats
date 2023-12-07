@@ -4,13 +4,13 @@ import "../style/workoutdetailsstyle.css";
 import "../style/buttonstyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import GradientHeader from '../components/GradientHeader';
+import BasicHeader from '../components/BasicHeader';
 
 const WorkoutDetails = ({ username }) => {
   let display_machine = 'Treadmill 3';
   return (
     <div className="workout_details">
-      <GradientHeader subheader={display_machine} />
+      <BasicHeader subheader={display_machine} />
       <TimeElapsed />
       <SpeedPace />
     </div>
@@ -30,6 +30,19 @@ const TimeElapsed = () => {
   )
 }
 
+const SpeedPace = () => {
+  return (
+    <div id="white-orange-container">
+      <CenteredContent>
+      <div id="badges">
+        <Badge title="ENTER SPEED" icon="enterspeed"/>
+        <Badge title="AVG PACE" icon="pace"/>
+      </div>
+      </CenteredContent>
+    </div>
+  )
+}
+
 const CenteredContent = ({ children }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -38,20 +51,8 @@ const CenteredContent = ({ children }) => {
   );
 };
 
-const SpeedPace = () => {
-  return (
-    <div id="white-container">
-      <div id="badges">
-        <Badge title="ENTER SPEED" icon="enterspeed"/>
-        <Badge title="AVG PACE" icon="pace"/>
-      </div>
-    </div>
-  )
-}
-
 const Badge = ({ title, icon }) => {
-  let iconElement; // Variable to store the FontAwesomeIcon component
-  // Use switch statement for conditional logic
+  let iconElement;
   switch (icon) {
     case 'enterspeed':
       iconElement = <div id="text_box_speed">00:00</div>;
@@ -62,15 +63,6 @@ const Badge = ({ title, icon }) => {
   }
 }
 
-// const VectorImage = () => {
-//   return (
-//     <img
-//       src={VectorImageSrc}
-//       alt="Vector"
-//       id="phone_nfc"
-//       style={{ width: '35%', height: 'auto', borderRadius: '10px' }}
-//     />
-//   );
-// };
+
 
 export default WorkoutDetails;
