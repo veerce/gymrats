@@ -1,6 +1,7 @@
 body {
-    margin: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
   
   .header {
     margin-left: 2rem;
@@ -15,23 +16,23 @@ body {
   }
   
   .navbar {
-    border-bottom: solid 1px #EBEBEB;
+    background-color: #131738;
   }
 
   .bottom-tab-nav {
-    border-top: solid 0px #EBEBEB;
+    border-top: solid 0px #131738;
   }
 
   .nav-link,
   .bottom-nav-link {
-    color: #CED7D2;
+    color: #FFFFFF;
   }
 
   .bottom-nav-link.active {
-    color: #FF6B2B;
+    color: #BCFF31;
   }
 
   .bottom-tab-label {
     font-size: 12px;
-    color: #5A5A5A;
+    color: #929292;
   } 
