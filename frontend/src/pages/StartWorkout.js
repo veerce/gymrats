@@ -4,7 +4,7 @@ import "../style/buttonstyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom'; 
 
-import { StandardButton, StartWorkoutButton } from '../components/Buttons.js';
+import { CheckEquipmentButton, StandardButton, StartWorkoutButton } from '../components/Buttons.js';
 import BasicHeader from '../components/BasicHeader';
 import VectorImageSrc from '../images/phone_NFC.png';
 
@@ -60,7 +60,7 @@ const CheckAvailability = ({CheckAvailability}) => {
   return (
     <div id="CheckAvailability" className="button-container">
       <div id="check_availability">
-        <StandardButton text="Check Equipment Availability"/>
+        <CheckEquipmentButton text="Check Equipment Availability"/>
       </div>
     </div>
   );
