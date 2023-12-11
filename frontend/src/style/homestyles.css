@@ -22,7 +22,7 @@
 }
 
 #start_workout {
-    background-color: #F8F7F7;
+    background-color: #131738;
     width: 100%;
     height: 70%;
     display: flex;
@@ -33,23 +33,23 @@
 #get_started {
     width: 100%;
     height: 20%;
-    background-color: #F8F7F7;
+    background-color: #131738;
 }
 
 #achievements {
     width: 100%;
     height: 35%;
-    background-color: #F8F7F7;
+    background-color: #131738;
 }
 
 #recent_workouts {
     width: 100%;
     height: 25%;
-    background-color: #F8F7F7;
+    background-color: #131738;
 }
 
 #previous_workouts {
-    background-color: #F8F7F7;
+    background-color: #131738;
     width: 100%;
     height: 70%;
     display: flex;
@@ -57,7 +57,7 @@
 }
 
 #badges {
-    background-color: #F8F7F7;
+    background-color: #131738;
     width: 100%;
     height: 70%;
     display: flex;
