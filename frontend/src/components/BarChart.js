@@ -27,7 +27,7 @@ const DailyCapacityTrends = ({ chartData }) => {
 
     
     <div style={{ position: 'relative', height: '30vh', width: '80vw' }}>
-        <h2>Daily Capacity Trends</h2>
+        <h2 style={{color: 'white'}}>Daily Capacity Trends</h2>
         <Bar data={chartData} options={options} />
     </div>
     );

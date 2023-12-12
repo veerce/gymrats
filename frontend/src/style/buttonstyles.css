@@ -104,7 +104,7 @@
 #occ_curr {
     /* display: flex; */
     justify-content: center;
-    background-color:#FFFFFF;
+    background-color:#131738;
     width: 350px;
     height: 200px;
     margin: 15px;
@@ -115,7 +115,7 @@
 
 
 #occ_curr_title {
-    color: black;
+    color: white;
     font-size: 20px;
     font-family: "Inter-Regular", "Helvetica";
     font-weight: 400;
@@ -124,7 +124,7 @@
 }
 
 #occ_curr_number {
-    color: black;
+    color: white;
     font-size: 50px;
     font-family: "Inter-Regular", "Helvetica";
     font-weight: 400;
@@ -134,6 +134,7 @@
     text-align: center;
     margin-top: 10px;
     font-size: 16px;
+    color:white;
 }
 
 
@@ -249,7 +250,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #BFE9FF;
+    background-color: #BCFF31;
     border: none;
     width: 350px;
     height: 50px;
