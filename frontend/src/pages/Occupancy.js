@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/occupancystyles.css';
 import BasicHeader from '../components/BasicHeader';
-import {OccupancyQuickView, AddGym} from '../components/Buttons';
+import {OccupancyQuickView, AddButton} from '../components/Buttons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import SearchBar from '../components/SearchBar';
@@ -21,7 +21,7 @@ const Occupancy = () => {
       <BasicHeader title="Your Gyms" />
       <OccupancyHome />
       <div id="add_button">
-        <AddGym onClick={handleAddGymClick} />
+        <AddButton onClick={handleAddGymClick} />
       </div>
     </div>
   );

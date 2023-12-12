@@ -20,7 +20,7 @@
     font-family: "Bariol";
     color: #131738;
     border: 2px solid #FFFFFF;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     display: flex; /* Use Flexbox */
     justify-content: center; /* Center horizontally */
@@ -40,7 +40,7 @@
     text-align: center;
     color: #ffffff;
     border: 2px solid #FFFFFF;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 #standard_workout_style {
@@ -218,32 +218,7 @@
     padding-left: 10px;
 }
 
-#add_gym_button {
-    width: 65px; /* Set width and height for the circle */
-    height: 65px;
-    border: 2px solid white;
-    background-color: #BCFF31; /* Change background color as desired */
-    border-radius: 50%; /* Makes the element a circle */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-#default_B {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #BFE9FF;
-    border: none;
-    width: 350px;
-    height: 50px;
-    font-weight: 400;
-    font-size: 20px;
-    color: black;
-    border-radius: 10px;
-    padding: 0 10px;
-    text-align: left;
-}
 
 
 #view_equipment {
@@ -265,17 +240,60 @@
 }
 
 #note_button {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    border-radius: 10px;
+    background-color: black;
+    border: 2px solid #FFFFFF;
+    width: 350px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 20px;
+    
 }
 
-#add_note_button {
-    width: 65px; 
+
+.circle_plus_button {
+    width: 65px; /* Set width and height for the circle */
     height: 65px;
-    background-color: #BFE9FF; 
-    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #BCFF31; /* Change background color as desired */
+    border-radius: 50%; /* Makes the element a circle */
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
 }
+
+/* .see_note {
+    background-color: black;
+    border: 2px solid white;
+    color: white; 
+    width: 350px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Bariol";
+    font-size: 25px;
+} */
+
+.see_note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    border: 2px solid white;
+    color: white;
+    width: 325px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Bariol";
+    font-size: 25px;
+    padding: 0 10px; /* Add padding for better spacing */
+  }
+  
+  .button-text {
+    flex: 1; /* Allows the title to take up remaining space */
+    text-align: left; /* Aligns the text to the left */
+  }
+  

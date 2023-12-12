@@ -16,7 +16,7 @@ export const StandardButton = ({ text }) => {
 
 export const StandardYellowButton = ({ text }) => {
   return (
-    <button type="button" className="btn btn-secondary startworkout-button">{text}</button> 
+    <button type="button" className="startworkout-button">{text}</button> 
   )
 }
 
@@ -45,7 +45,7 @@ export const OccupancyQuickView = ({gym_name, open, hours, occ, onClick}) => {
   }
 
   return (
-    <button type="button" className="btn btn-secondary occ_quick_view" onClick={onClick}>
+    <button type="button" className="occ_quick_view" onClick={onClick}>
       <div id="gym_info">
         <div id="gym_name" className="subsection">{gym_name}</div>
         <div className="subsection">
@@ -61,9 +61,9 @@ export const OccupancyQuickView = ({gym_name, open, hours, occ, onClick}) => {
   )
 }
 
-export const AddGym = ({onClick}) => {
+export const AddButton = ({onClick}) => {
   return (
-    <button type="button" className="btn btn-default" id="add_gym_button" onClick={onClick}>
+    <button type="button" className="circle_plus_button" onClick={onClick}>
       <FontAwesomeIcon icon={faPlus} style={{color: "#000000",}} size="2x" />
     </button>
   )
@@ -144,19 +144,9 @@ export const ViewOccupancyButton = ({title, onClick}) => {
 
 export const NotesButton = ({title, onClick}) => { 
   return (
-      <div id="note_button">
-          <button type="button" id="default_B" className="btn btn-secondary" onClick={onClick}>
-            <span>{title}</span>
-            <FontAwesomeIcon icon={faChevronRight} style={{color: "#000000",}} />
-          </button>
-      </div>
-  )
-}
-
-export const AddNote = ({onClick}) => {
-  return (
-    <button type="button" className="btn btn-default" id="add_note_button" onClick={onClick}>
-      <FontAwesomeIcon icon={faPlus} style={{color: "#FF6B2B",}} size="2x" />
+    <button type="button" className="see_note" onClick={onClick}>
+      <span className="button-text">{title}</span>
+      <FontAwesomeIcon icon={faChevronRight} style={{ color: "#FFFFFF " }} />
     </button>
   )
 }
