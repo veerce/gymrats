@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell, faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import ProgressBar from './ProgressBar';
 import DailyCapacityTrends from '../components/BarChart';
+import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 
 
 export const StandardButton = ({ text }) => {
@@ -87,13 +88,34 @@ export const CurrentOccupancy = ({occ, onClick}) => {
 
   return (
     <button type="button" id="occ_curr" onClick={onClick}>
-        <div id="occ_curr_title">Current Occupancy</div>
-        <div id="occ_curr_number">
-          {occ}%  
+      
+      
+        <div style={{ display: 'flex',  justifyContent: 'center', marginTop: '25px'
+        }}>
+          <div style={{ width: '200px', height: '200px'}}>
+            <CircularProgressbar
+              value={`${occ}`}
+              strokeWidth={5}
+              text={`${occ}%`}
+              styles={buildStyles({
+              textSize: "20px",
+              textWeight: "50",
+              textFont: "Bariol, sans-serif",
+              textColor: "white",
+              pathColor: "#BCFF31",
+              trailColor: "#131738",
+              })}
+            />
+          </div>
         </div>
-        <ProgressBar percentage={occ} />
         <div id="occ_curr_sub">{message}</div>
+        
+       
     </button>
+    
+    
+
+
     
   )
 }

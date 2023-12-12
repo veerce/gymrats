@@ -135,7 +135,7 @@
 #occ_curr_sub {
     text-align: center;
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 20px;
     color:white;
 }
 
@@ -262,7 +262,7 @@
     border-radius: 10px;
     padding: 0 10px;
     text-align: left;
-    margin-top:10px;
+    margin-top:60px;
     margin-bottom:20px;
 }
 
