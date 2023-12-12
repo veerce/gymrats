@@ -17,7 +17,7 @@
     background-color: #BCFF31;
     font-weight: bold;
     font-size: 30px;
-    font-family: "Inter-Medium", "Bariol";
+    font-family: "Bariol";
     color: #131738;
     border: 2px solid #FFFFFF;
     border-radius: 5px;
@@ -36,7 +36,7 @@
     height: 50px;
     font-weight: bold;
     font-size: 22px;
-    font-family: "Inter-Medium", "Bariol";
+    font-family: "Bariol";
     text-align: center;
     color: #ffffff;
     border: 2px solid #FFFFFF;
@@ -85,26 +85,26 @@
   text-align: center;
   color: white;
   font-size: 18px;
-  font-family: "Inter-Regular", "Helvetica";
+  font-family: "Bariol";
   font-style: italic;
   font-weight: 500;
 }
 
-#occ_quick_view {
+.occ_quick_view {
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #BFE9FF;
     width: 350px;
     height: 100px;
     margin: 15px;
     padding: 0;
-    border: none;  
-    border-radius: 10px;
+    font-family: "Bariol";
 }
 
 #occ_curr {
-    /* display: flex; */
     justify-content: center;
     background-color:#FFFFFF;
     width: 350px;
@@ -117,18 +117,18 @@
 
 
 #occ_curr_title {
-    color: black;
+    color: white;
     font-size: 20px;
-    font-family: "Inter-Regular", "Helvetica";
+    font-family: "Bariol";
     font-weight: 400;
     padding-top: 20px;
 
 }
 
 #occ_curr_number {
-    color: black;
+    color: white;
     font-size: 50px;
-    font-family: "Inter-Regular", "Helvetica";
+    font-family: "Bariol";
     font-weight: 400;
 }
 
@@ -137,8 +137,6 @@
     margin-top: 10px;
     font-size: 16px;
 }
-
-
 
 #gym_info {
     width: 75%;
@@ -149,6 +147,7 @@
     justify-content: center; /* Horizontal centering */
     align-items: center; /* Vertical centering */
     border: none;   
+    color: white;
 }
 
 #percentage {
@@ -158,6 +157,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
 .subsection {
@@ -168,9 +168,9 @@
 }
 
 #gym_name {
-    color: black;
+    color: white;
     font-size: 25px;
-    font-family: "Inter-Regular", "Helvetica";
+    font-family: "Bariol";
     font-weight: 400;
     padding-top: 20px;
     padding-left: 10px;
@@ -179,22 +179,22 @@
 .circle {
     width: 65px; /* Set width and height for the circle */
     height: 65px;
-    background-color: white; /* Change background color as desired */
+    border: 4px solid #BCFF31;
+    background-color: black; /* Change background color as desired */
     border-radius: 50%; /* Makes the element a circle */
-    color: #FF6B2B;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 25px;
-    font-weight: 500;
-    font-family: "Inter-Medium", "Helvetica";
+    font-family: "Bariol";
 }
 
 #open {
     height: 100%;
     color: green;
     font-size: 20px;
-    font-family: "Inter-Regular", "Helvetica";
+    font-family: "Bariol";
     font-weight: bold;
     padding-left: 10px;
 }
@@ -203,31 +203,30 @@
     height: 100%;
     color: red;
     font-size: 20px;
-    font-family: "Inter-Regular", "Helvetica";
+    font-family: "Bariol";
     font-weight: bold;
     padding-left: 10px;
 }
 
 #hours {
     height: 100%;
-    color: black;
+    color: white;
     font-size: 20px;
-    font-family: "Inter-Regular", "Helvetica";
-    font-weight: 300;
+    font-family: "Bariol";
     text-align: left; /* Align text to the left */
-    letter-spacing: 2px; /* Increase letter spacing */
+    letter-spacing: 1px; /* Increase letter spacing */
     padding-left: 10px;
 }
 
 #add_gym_button {
     width: 65px; /* Set width and height for the circle */
     height: 65px;
-    background-color: #BFE9FF; /* Change background color as desired */
+    border: 2px solid white;
+    background-color: #BCFF31; /* Change background color as desired */
     border-radius: 50%; /* Makes the element a circle */
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
 }
 
 #default_B {

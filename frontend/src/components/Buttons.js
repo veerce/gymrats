@@ -20,7 +20,6 @@ export const StandardYellowButton = ({ text }) => {
   )
 }
 
-
 export const WorkoutLink = ({ datetime, length }) => {
     return (
       <button type="button" id="standard_workout_style" className="btn btn-secondary">
@@ -46,7 +45,7 @@ export const OccupancyQuickView = ({gym_name, open, hours, occ, onClick}) => {
   }
 
   return (
-    <button type="button" id="occ_quick_view" className="btn btn-secondary" onClick={onClick}>
+    <button type="button" className="btn btn-secondary occ_quick_view" onClick={onClick}>
       <div id="gym_info">
         <div id="gym_name" className="subsection">{gym_name}</div>
         <div className="subsection">
@@ -65,7 +64,7 @@ export const OccupancyQuickView = ({gym_name, open, hours, occ, onClick}) => {
 export const AddGym = ({onClick}) => {
   return (
     <button type="button" className="btn btn-default" id="add_gym_button" onClick={onClick}>
-      <FontAwesomeIcon icon={faPlus} style={{color: "#FF6B2B",}} size="2x" />
+      <FontAwesomeIcon icon={faPlus} style={{color: "#000000",}} size="2x" />
     </button>
   )
 }
