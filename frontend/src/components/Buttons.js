@@ -9,17 +9,24 @@ import DailyCapacityTrends from '../components/BarChart';
 export const StandardButton = ({ text }) => {
     return (
         <div>
-            <button type="button" id="default_A" className="btn btn-secondary">{text}</button> 
+            <button type="button" id="default_A" className="std_button default_A">{text}</button> 
         </div>
     )
 }
+
+export const StandardYellowButton = ({ text }) => {
+  return (
+    <button type="button" className="btn btn-secondary startworkout-button">{text}</button> 
+  )
+}
+
 
 export const WorkoutLink = ({ datetime, length }) => {
     return (
       <button type="button" id="standard_workout_style" className="btn btn-secondary">
         <div id="inner-div">
             <div id="inner-div-left">
-                <FontAwesomeIcon icon={faDumbbell} size="4x" style={{color: "#000000",}}/>
+                <FontAwesomeIcon icon={faDumbbell} size="4x" style={{color: "#FFFFFF",}}/>
             </div>
           <div id="inner-div-right">
             <div className="inner_div_datetime">{datetime}</div>
