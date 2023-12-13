@@ -1,18 +1,24 @@
 
-import React from 'react';
+import React, { useState }  from 'react';
 import "../style/workoutdetailsstyle.css";
 import "../style/buttonstyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import BasicHeader from '../components/BasicHeader';
+import TreadmillIcon from '../images/treadmill-icon.png';
+import SmithMachineIcon from '../images/smith-machine.png';
+import LegPressIcon from '../images/leg-press.png';
+import { CheckEquipmentButton, StandardButton, StartWorkoutButton } from '../components/Buttons.js';
+import { useNavigate } from 'react-router-dom'; 
 
 const WorkoutDetails = ({ username }) => {
-  let display_machine = 'Treadmill 3';
+  let display_machine = 'My Workout';
   return (
     <div className="workout_details">
-      <BasicHeader subheader={display_machine} />
+      <BasicHeader title={display_machine} />
       <TimeElapsed />
-      <SpeedPace />
+      <CurrentEquipment />
+      <CheckEquipment />
+      <EndButton />
     </div>
   );
 };
@@ -20,7 +26,7 @@ const WorkoutDetails = ({ username }) => {
 const TimeElapsed = () => {
   return (
     <div id="time-container">
-        <div className="white-container">
+        <div className="yellow-container">
         <CenteredContent>
           <div id="text_box_time">12:17</div>
           <div id="text_box_mins">MINS</div>
@@ -30,18 +36,77 @@ const TimeElapsed = () => {
   )
 }
 
-const SpeedPace = () => {
+const CurrentEquipment = () => {
+  const [selectedWorkout, setSelectedWorkout] = useState('treadmill');
+  const handleWorkoutChange = (workout) => {
+    setSelectedWorkout(workout);
+  };
+  
+  const getMachineName = () => {
+    switch (selectedWorkout) {
+      case 'treadmill':
+        return 'Treadmill';
+      case 'smith machine':
+        return 'Smith Machine';
+      case 'leg press':
+        return 'Leg Press';
+      default:
+        return '';
+    }
+  };
+
+  const [speed, setSpeed] = useState('');
+  const [pace, setPace] = useState('');
+
+  const handleSpeedChange = (event) => {
+    const newSpeed = event.target.value;
+    setSpeed(newSpeed);
+
+    const newPace = calculatePace(newSpeed);
+    setPace(newPace);
+  };
+
+  const calculatePace = (speed) => {
+    return speed ? (60 / parseFloat(speed)).toFixed(2) : '';
+  };
+
   return (
-    <div id="white-orange-container">
-      <CenteredContent>
-      <div id="badges">
-        <Badge title="ENTER SPEED" icon="enterspeed"/>
-        <Badge title="AVG PACE" icon="pace"/>
+    <div id="equipment-container">
+      <div className="white-container">
+        <div className="side-by-side-containers">
+          <div className="square-container">
+            <CenteredContent>
+              <div id="equipment_icon" className="icon-container">
+                {selectedWorkout === 'treadmill' && (
+                  <img className="icon-image" src={TreadmillIcon} alt="Treadmill Icon" />
+                )}
+                {selectedWorkout === 'smith machine' && (
+                  <img className="icon-image" src={SmithMachineIcon} alt="Smith Machine Icon" />
+                )}
+                {selectedWorkout === 'leg press' && (
+                  <img className="icon-image" src={LegPressIcon} alt="Leg Press Icon" />
+                )}
+              </div>
+              <div id="text_box_mins">{getMachineName()}</div>
+            </CenteredContent>
+          </div>
+          <div className="square-container">
+              <div id="text_box_label">SPEED</div>
+              <div className="input-container">
+                <input
+                  type="text"
+                  placeholder="Enter Speed (MPH)"
+                  value={speed}
+                  onChange={handleSpeedChange}
+                />
+              </div>
+              <div id="text_box_mins">PACE {pace ? `${pace} min/mile` : '---'}</div>
+            </div>
       </div>
-      </CenteredContent>
     </div>
-  )
-}
+    </div>
+  );
+};
 
 const CenteredContent = ({ children }) => {
   return (
@@ -51,18 +116,34 @@ const CenteredContent = ({ children }) => {
   );
 };
 
-const Badge = ({ title, icon }) => {
-  let iconElement;
-  switch (icon) {
-    case 'enterspeed':
-      iconElement = <div id="text_box_speed">00:00</div>;
-      break;
-    case 'pace':
-      iconElement = <div id="text_box_pace">7:30</div>;
-      break;
-  }
+
+const CheckEquipment = ({CheckEquipment}) => {
+  return (
+    <CenteredContent>
+    <div id="CheckAvailability" className="button-container">
+      <div id="check_availability">
+        <CheckEquipmentButton text="Check Equipment Availability"/>
+      </div>
+    </div>
+    </CenteredContent>
+  );
 }
 
+const EndButton = () => {
+  const navigate = useNavigate();
+  const handleEndWorkout = () => {
+    navigate('/home');
+  };
 
+  return (
+    <CenteredContent>
+    <div id="StartThisWorkout" className="button-container">
+      <div id="end_this_workout">
+        <StartWorkoutButton text="END WORKOUT" onClick={handleEndWorkout} />
+      </div>
+    </div>
+    </CenteredContent>
+  );
+}
 
 export default WorkoutDetails;
