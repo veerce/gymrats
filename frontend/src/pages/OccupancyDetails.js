@@ -6,8 +6,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import { useLocation } from 'react-router-dom';
-import {CurrentOccupancy} from '../components/Buttons';
-import {ViewOccupancyButton, AddNote} from '../components/Buttons';
+// import {CurrentOccupancy} from '../components/Buttons';
+import {CurrentOccupancy, ViewOccupancyButton} from '../components/Cards';
+// import {ViewOccupancyButton, AddNote} from '../components/Buttons';
+
 import DailyCapacityTrends from '../components/BarChart';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
@@ -78,30 +80,11 @@ const OccupancyDetails = () => {
     return (
         <div className="container">
           <BasicHeader title="Dodge Fitness Center" subheader="OPEN 6AM - 12AM"/>  
-          {/* <div style={{ width: '200px', height: '200px' }}>
-            <CircularProgressbar
-              value={70}
-              strokeWidth={5}
-              text={'70%'}
-              styles={buildStyles({
-              textSize: "20px",
-              textWeight: "50",
-              textFont: "Bariol, sans-serif",
-              textColor: "white",
-              pathColor: "#BCFF31",
-              trailColor: "#131738"
-              })}
-            />
-          </div> */}
-          
           <CurrentOccupancy occ="70" /> 
           <ViewOccupancyButton title="View Occupancy by Equipment" onClick={handleEquipmentClick}/>
           <div>
             <DailyCapacityTrends chartData={data} />
           </div>
-          {/* <Routes>
-            <Route path="equipmentall" element={<EquipmentAll />} />
-          </Routes> */}
         </div>
         
     )

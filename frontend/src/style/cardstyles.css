@@ -1,0 +1,41 @@
+#occ_curr {
+    /* display: flex; */
+    justify-content: center;
+    background-color:#131738;
+    width: 350px;
+    height: 200px;
+    margin: 15px;
+    padding: 0;
+    border: none;  
+    border-radius: 10px;
+}
+
+#occ_curr_sub {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    color:white;
+}
+
+#note_button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#view_equipment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #BCFF31;
+    border: none;
+    width: 350px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+    border-radius: 10px;
+    padding: 0 10px;
+    text-align: left;
+    margin-top:60px;
+    margin-bottom:20px;
+}
