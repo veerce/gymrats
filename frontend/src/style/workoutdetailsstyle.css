@@ -23,11 +23,41 @@
 
 .yellow-container {
   background-color: #BCFF31;
-  padding: 40px;
+  padding: 30px;
   border-radius: 10px;
-  max-width: 70%;
-  margin-top: 10px;
+  max-width: 85%;
+  margin: 10px auto; /* Center horizontally with auto margin */
   margin-bottom: 20px;
+}
+
+.white-container {
+  background-color: #FFFFFF;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 85%;
+  margin: 10px auto; /* Center horizontally with auto margin */
+  margin-bottom: 20px;
+}
+
+.side-by-side-containers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.square-container {
+  flex: 1; /* Equal flex proportions for both side-by-side containers */
+  max-width: 50%; /* Optional: Limit the maximum width of each container */
+}
+
+.icon-container {
+  max-width: 80%;
+  text-align: center; /* Center the image horizontally */
+}
+
+.icon-image {
+  max-width: 70%;
+  height: auto;
+  display: inline-block;
 }
 
 #workout_details {
@@ -39,102 +69,37 @@
     align-items: center; /* Vertically center */
 }
 
-#get_started {
-    width: 100%;
-    height: 20%;
-    background-color: #F8F7F7;
-}
-
-#achievements {
-    width: 100%;
-    height: 35%;
-    background-color: #F8F7F7;
-}
-
 #recent_workouts {
     width: 100%;
     height: 25%;
     background-color: #F8F7F7;
 }
 
-#previous_workouts {
-    background-color: #F8F7F7;
-    width: 100%;
-    height: 70%;
-    display: flex;
-    justify-content: center; /* Horizontally center */
-}
-
-#badges {
-    background-color: #F8F7F7;
-    width: 100%;
-    height: 70%;
-    display: flex;
-    justify-content: center; /* Horizontally center */
-}
-
-.badge {
-    display: flex; /* Set as flex container */
-    flex-direction: column; /* Arrange children vertically */
-    width: 150px;
-    height: 180px;
-    margin-right: 10px;
-    background-color: white;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-  }
-
-.icon {
-    padding-top: 20px;
-}
-  
-
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-.badge_title {
-    text-align: center;
-    color: black;
-    font-size: 25px;
-    font-family: 'Lobster', sans-serif;
-    font-weight: 400;
-    max-width: 100; /* Adjust as needed */
-    overflow-wrap: break-word; /* Ensures word wrapping */
-    padding-top: 20px;
-}
-
-.white-container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    max-width: 70%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-  }
-
-  .white-orange-container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    max-width: 70%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    border: 2px solid #FF6B2B;
-  }
-
   #text_box_time {
-    margin-top: 25px;
+    margin-top: 20px;
     color: #000000;
-    font-size: 40px;
+    font-size: 60px;
     font-weight: 600;
-  }
-
-  #text_box_speed {
-    margin-top: 25px;
-    color: #000000;
-    font-size: 40px;
-    font-weight: 600;
+    font-family: bariol;
   }
   
-  #text_box_mins {
-    margin-top: 15px;
-    color: #FF6B2B;
+  #text_box_label {
+    color: #000000;
+    font-family: bariol;
   }
+
+  .input-container {
+    display: inline-block;
+    margin-left: 10px; /* Adjust the margin as needed */
+  }
+
+  .input-container input {
+    width: 100px; /* Adjust the width as needed */
+  }
+
+  #text_box_label {
+    color: #000000;
+    font-family: bariol;
+  }
+
+
