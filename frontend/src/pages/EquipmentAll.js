@@ -5,6 +5,7 @@ import '../style/equipmentstyles.css';
 import TreadmillImage from '../images/solar_treadmill-round-bold.png';
 import LegpressImage from '../images/leg-press-image.png';
 import BenchImage from '../images/bench-image.png';
+import { Link } from 'react-router-dom';
 
 const EquipmentCard = ({ name, status, timeStarted, avgTime, imageUrl }) => (
     <div className="card">
@@ -16,14 +17,23 @@ const EquipmentCard = ({ name, status, timeStarted, avgTime, imageUrl }) => (
     
       <img src={imageUrl} alt={`${name}`} className="equipment-image" />
       {/* <div className="equipment-status">{status ? 'Available' : 'In use'}</div> */}
-      <div className="equipment-time">{`Started ${timeStarted} ago`}</div>
-      <div className="equipment-avg-time">{`Avg: ${avgTime}`}</div>
+      {/* <div className="equipment-time">{`Started ${timeStarted} ago`}</div>
+      <div className="equipment-avg-time">{`Avg: ${avgTime}`}</div> */}
+      {!status && <div className="equipment-time">{`Started ${timeStarted} ago`}</div>}
+      {!status && <div className="equipment-avg-time">{`Avg: ${avgTime}`}</div>}
     </div>
 );
   
-const EquipmentSection = ({ title, equipments }) => (
-    <section>
+const EquipmentSectionHeader = ({ title, link }) => (
+    <div className="section-header">
       <h2>{title}</h2>
+      <Link to={link} className="see-all-link">see all &gt; </Link>
+    </div>
+);
+
+const EquipmentSection = ({ title, equipments, link }) => (
+    <section>
+      <EquipmentSectionHeader title={title} link={link} />
       <div className="equipment-grid">
         {equipments.map(equipment => (
           <EquipmentCard key={equipment.name} {...equipment} />
@@ -53,10 +63,10 @@ const EquipmentAll = () => {
     return (
         <div className="container">
             <BasicHeader title="Equipments" />
-            
-            <SearchBar placeholder_text= "Find a machine, category, etc."/> 
-            
-            <EquipmentSection title="Cardio" equipments={cardioEquipment} />
+            <div className="equipment-all-search-bar">
+                <SearchBar placeholder_text= "Find a machine, category, etc."/> 
+            </div> 
+            <EquipmentSection title="Cardio" equipments={cardioEquipment} link='/equipmentcardio' />
             <EquipmentSection title="Weight Machines" equipments={weightMachines} />
             <EquipmentSection title="Free Weights" equipments={freeWeights} /> 
         </div>
