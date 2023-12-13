@@ -1,0 +1,51 @@
+-- Users Table
+CREATE TABLE Users (
+    user_id INTEGER PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT,
+    saved_gyms TEXT -- Comma-separated list of gym_id
+);
+
+-- Workouts Table
+CREATE TABLE Workouts (
+    workout_id INTEGER PRIMARY KEY,
+    user_id INTEGER,
+    date TEXT,
+    time TEXT,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+-- Gyms Table
+CREATE TABLE Gyms (
+    gym_id INTEGER PRIMARY KEY,
+    gym_name TEXT,
+    hours TEXT,
+    maximum_capacity INTEGER,
+    last_updated_time TEXT
+);
+
+-- Equipment Table
+CREATE TABLE Equipment (
+    equipment_id INTEGER PRIMARY KEY,
+    gym_id INTEGER,
+    average_usage_time TEXT,
+    start_time TEXT,
+    is_used INTEGER, -- 0 for not used, 1 for used
+    FOREIGN KEY (gym_id) REFERENCES Gyms(gym_id)
+);
+
+-- Exercises Table
+CREATE TABLE Exercises (
+    exercise_id INTEGER PRIMARY KEY,
+    workout_id INTEGER,
+    equipment_id INTEGER,
+    exercise_name TEXT,
+    sets INTEGER,
+    reps INTEGER,
+    weight INTEGER, -- Weight used in the exercise
+    duration_minutes INTEGER,
+    intensity INTEGER, -- Intensity tracker (can be a rating, scale, etc.)
+    FOREIGN KEY (workout_id) REFERENCES Workouts(workout_id),
+    FOREIGN KEY (equipment_id) REFERENCES Equipment(equipment_id)
+);
+
