@@ -14,9 +14,12 @@ const StartWorkout = ({ username }) => {
   return (
     <div className="container start_workout">
       <BasicHeader title={display_title} />
-      <Instructions />
-      <CheckAvailability />
-      <StartThisWorkout />
+      <div className='content'>
+        <Instructions />
+        <CheckAvailability />
+        <StartThisWorkout />
+      </div>
+      
     </div>
   );
 };
