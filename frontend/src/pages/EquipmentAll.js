@@ -5,6 +5,7 @@ import '../style/equipmentstyles.css';
 import TreadmillImage from '../images/solar_treadmill-round-bold.png';
 import LegpressImage from '../images/leg-press-image.png';
 import BenchImage from '../images/bench-image.png';
+
 const EquipmentCard = ({ name, status, timeStarted, avgTime, imageUrl }) => (
     <div className="card">
     <div className="equipment-info">
@@ -52,7 +53,9 @@ const EquipmentAll = () => {
     return (
         <div className="container">
             <BasicHeader title="Equipments" />
+            
             <SearchBar placeholder_text= "Find a machine, category, etc."/> 
+            
             <EquipmentSection title="Cardio" equipments={cardioEquipment} />
             <EquipmentSection title="Weight Machines" equipments={weightMachines} />
             <EquipmentSection title="Free Weights" equipments={freeWeights} /> 
