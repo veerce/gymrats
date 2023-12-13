@@ -34,7 +34,7 @@ export const OccupancyHome = () => {
 
   const goToOccupancyPage = () => {
     console.log("test");
-    navigate("./pages/GymSearch", { state: { yourData: 123 } });
+    navigate("/occupancydetails", { state: { yourData: 123 } });
   };
 
   return (

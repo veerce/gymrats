@@ -8,8 +8,10 @@ import Notes from './pages/Notes';
 import Profile from './pages/Profile';
 import Navigation from './components/Navigation';
 import OccupancyDetails from './pages/OccupancyDetails';
+import EquipmentAll from './pages/EquipmentAll';
 import WorkoutDetails from './pages/WorkoutDetails';
 import GymSearch from './pages/GymSearch';
+import EquipmentCardio from './pages/EquipmentCardio';
 import { useState, useEffect } from "react";
 
 // react and flask connection code from 
@@ -60,11 +62,13 @@ function App() {
         <Route path="/home" element={<Home username={data.name}/>} />
         <Route path="/occupancy" element={<Occupancy />} />
         <Route path="/occupancydetails" element={<OccupancyDetails />}/>
+        <Route path="/equipmentall" element={<EquipmentAll />}/>
         <Route path="/startworkout" element={<StartWorkout />} />
         <Route path="/notes" element={<Notes />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/workout-details" element={<WorkoutDetails />} />
         <Route path="/gym-search" element={<GymSearch />} />
+        <Route path="/equipmentcardio" element={<EquipmentCardio />} />
       </Routes>
     </div>
   );

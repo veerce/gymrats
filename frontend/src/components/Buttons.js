@@ -2,8 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "../style/buttonstyles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell, faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import ProgressBar from './ProgressBar';
-import DailyCapacityTrends from '../components/BarChart';
+
+
 
 
 export const StandardButton = ({ text }) => {
@@ -69,78 +69,6 @@ export const AddButton = ({onClick}) => {
   )
 }
 
-
-export const CurrentOccupancy = ({occ, onClick}) => {
-
-  const getStatusMessage = (occ) => {
-    if (occ > 60) {
-      return "Higher than average occupancy";
-    } else if (occ > 40) {
-      return "Average occupancy";
-    } else {
-      return "Lower than average occupancy";
-    }
-  };
-
-  const message = getStatusMessage(occ);
-
-  return (
-    <button type="button" id="occ_curr" onClick={onClick}>
-        <div id="occ_curr_title">Current Occupancy</div>
-        <div id="occ_curr_number">
-          {occ}%  
-        </div>
-        <ProgressBar percentage={occ} />
-        <div id="occ_curr_sub">{message}</div>
-    </button>
-    
-  )
-}
-
-// export const DailyCapacity= () => {
-//   const data = {
-//     labels: ['6a', '12p', '3p', '6p', '12a'],
-//     datasets: [
-//       {
-//         label: 'Daily Capacity',
-//         data: [65, 59, 80, 81, 56, 55, 40], 
-//         backgroundColor: [
-//           'rgba(75, 192, 192, 0.2)', 
-//           'rgba(75, 192, 192, 0.2)',
-//           'rgba(75, 192, 192, 0.2)',
-//           'rgba(255, 99, 132, 0.2)', 
-//           'rgba(75, 192, 192, 0.2)'
-//         ],
-//         borderColor: [
-//           'rgba(75, 192, 192, 1)', 
-//           'rgba(75, 192, 192, 1)',
-//           'rgba(75, 192, 192, 1)',
-//           'rgba(255, 99, 132, 1)', 
-//           'rgba(75, 192, 192, 1)'
-//         ],
-//         borderWidth: 1,
-//       },
-//     ],
-//   };
-//   return (
-//     <button type="button" id="occ_curr">
-//         <DailyCapacityTrends chartData={data} />
-//     </button>
-    
-//   )
-// }
-
-
-export const ViewOccupancyButton = ({title, onClick}) => { 
-  return (
-      <div id="note_button">
-          <button type="button" id="view_equipment" className="btn btn-secondary" onClick={onClick}>
-            <span>{title}</span>
-            <FontAwesomeIcon icon={faChevronRight} style={{color: "#000000",}} />
-          </button>
-      </div>
-  )
-}
 
 export const NotesButton = ({title, onClick}) => { 
   return (

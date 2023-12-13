@@ -6,51 +6,87 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import { useLocation } from 'react-router-dom';
-import {CurrentOccupancy} from '../components/Buttons';
-import {ViewOccupancyButton, AddNote} from '../components/Buttons';
+// import {CurrentOccupancy} from '../components/Buttons';
+import {CurrentOccupancy, ViewOccupancyButton} from '../components/Cards';
+// import {ViewOccupancyButton, AddNote} from '../components/Buttons';
+
 import DailyCapacityTrends from '../components/BarChart';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
+import EquipmentAll from './EquipmentAll';
 
 const OccupancyDetails = () => {
+    const navigate = useNavigate();
 
     const data = {
-        labels: ['6a', '12p', '3p', '6p', '12a'],
+        labels: ['6a', ' ', ' ', '9a', ' ', ' ', '12p', ' ', ' ', '3p', ' ', ' ', '6p',' ',' ', '9p',' ',' ', '12a'],
         datasets: [
           {
             label: 'Daily Capacity',
-            data: [65, 59, 80, 81, 56, 55, 40], 
+            data: [65, 60, 62, 65, 40, 60, 59, 70, 76, 80, 90, 87, 81, 86, 87, 90, 85, 56, 40], 
             backgroundColor: [
-              'rgba(75, 192, 192, 0.2)', 
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(255,165,0, 0.2)', 
-              'rgba(75, 192, 192, 0.2)'
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(188, 255, 49, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)', 
             ],
             borderColor: [
-              'rgba(75, 192, 192, 1)', 
-              'rgba(75, 192, 192, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(255, 99, 132, 1)', 
-              'rgba(75, 192, 192, 1)'
+              'rgba(194, 172, 255, 1)', 
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(188, 255, 49, 1)', 
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
+              'rgba(194, 172, 255, 1)',
             ],
-            borderWidth: 1,
+            borderWidth: 0,
           },
         ],
       };
-    const handleEquipmentCLick = () => {
+    const handleEquipmentClick = () => {
         console.log(`Equipment clicked`);
+        navigate('/equipmentall');
     };
     const location = useLocation();
     const yourData = location.state;
-    console.log("State: ", yourData);
+    // console.log("State: ", yourData);
     return (
         <div className="container">
           <BasicHeader title="Dodge Fitness Center" subheader="OPEN 6AM - 12AM"/>  
-          <CurrentOccupancy occ="70" />
-          <ViewOccupancyButton title="View Occupancy by Equipment" onClick={handleEquipmentCLick}/>
+          <CurrentOccupancy occ="70" /> 
+          <ViewOccupancyButton title="View Occupancy by Equipment" onClick={handleEquipmentClick}/>
           <div>
             <DailyCapacityTrends chartData={data} />
           </div>
         </div>
+        
     )
 };
 
