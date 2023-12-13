@@ -7,10 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import BasicHeader from '../components/BasicHeader';
 
 const WorkoutDetails = ({ username }) => {
-  let display_machine = 'Treadmill 3';
+  let display_machine = 'My Workout';
   return (
     <div className="workout_details">
-      <BasicHeader subheader={display_machine} />
+      <BasicHeader title={display_machine} />
       <TimeElapsed />
       <SpeedPace />
     </div>
@@ -20,7 +20,7 @@ const WorkoutDetails = ({ username }) => {
 const TimeElapsed = () => {
   return (
     <div id="time-container">
-        <div className="white-container">
+        <div className="yellow-container">
         <CenteredContent>
           <div id="text_box_time">12:17</div>
           <div id="text_box_mins">MINS</div>
