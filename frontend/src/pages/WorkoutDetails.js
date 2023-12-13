@@ -119,11 +119,13 @@ const CenteredContent = ({ children }) => {
 
 const CheckEquipment = ({CheckEquipment}) => {
   return (
+    <CenteredContent>
     <div id="CheckAvailability" className="button-container">
       <div id="check_availability">
         <CheckEquipmentButton text="Check Equipment Availability"/>
       </div>
     </div>
+    </CenteredContent>
   );
 }
 
@@ -134,11 +136,13 @@ const EndButton = () => {
   };
 
   return (
+    <CenteredContent>
     <div id="StartThisWorkout" className="button-container">
       <div id="end_this_workout">
         <StartWorkoutButton text="END WORKOUT" onClick={handleEndWorkout} />
       </div>
     </div>
+    </CenteredContent>
   );
 }
 
