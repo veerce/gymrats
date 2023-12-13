@@ -54,7 +54,7 @@ export const CurrentOccupancy = ({occ}) => {
 
 export const ViewOccupancyButton = ({title, onClick}) => { 
     return (
-        <div id="note_button">
+        <div id="equipment_button">
             <button type="button" id="view_equipment" className="btn btn-secondary" onClick={onClick}>
               <span>{title}</span>
               <FontAwesomeIcon icon={faChevronRight} style={{color: "#000000",}} />
