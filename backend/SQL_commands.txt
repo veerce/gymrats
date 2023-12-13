@@ -27,6 +27,7 @@ CREATE TABLE Gyms (
 -- Equipment Table
 CREATE TABLE Equipment (
     equipment_id INTEGER PRIMARY KEY,
+    equipment_name TEXT,
     gym_id INTEGER,
     average_usage_time TEXT,
     start_time TEXT,
