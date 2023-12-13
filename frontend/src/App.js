@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import Navigation from './components/Navigation';
 import OccupancyDetails from './pages/OccupancyDetails';
 import WorkoutDetails from './pages/WorkoutDetails';
+import GymSearch from './pages/GymSearch';
 import { useState, useEffect } from "react";
 
 // react and flask connection code from 
@@ -24,20 +25,31 @@ function App() {
   });
 
   useEffect(() => {
-    // Using fetch to fetch the api from 
-    // flask server it will be redirected to proxy
-    fetch("/data").then((res) =>
-        res.json().then((data) => {
-            // Setting a data from api
-            setdata({
-                name: data.Name,
-                email: data.Email,
-                age: data.Age,
-                account_number: data.AccountNumber,
-            });
-            console.log(data)
-        })
-    );
+      fetch("/data")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data) {
+          setdata({
+            name: data.Name,
+            email: data.Email,
+            age: data.Age,
+            account_number: data.AccountNumber,
+          });
+          console.log(data);
+        } else {
+          console.error('Empty response or invalid JSON format');
+          // Handle empty or invalid response as needed
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        // Handle error conditions, like network issues or failed requests
+      });  
   }, []);
 
   return (
@@ -52,6 +64,7 @@ function App() {
         <Route path="/notes" element={<Notes />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/workout-details" element={<WorkoutDetails />} />
+        <Route path="/gym-search" element={<GymSearch />} />
       </Routes>
     </div>
   );

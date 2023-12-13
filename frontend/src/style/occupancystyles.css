@@ -5,9 +5,16 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    background-color: #F8F7F7;
+    background-color: #131738;
     position: relative;
     align-items: center; /* Vertically center */
+}
+
+.inheret-container {
+  height: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 #saved_gyms {
@@ -16,21 +23,35 @@
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */
     padding: 5px;
+    padding-top: 40px;
     overflow-y: scroll; /* Enable vertical scrollbar when content overflows */
 }
 
 #add_button {
-    position: fixed;
-    bottom: 100px; /* Adjust distance from the bottom */
-    right: 25px; /* Adjust distance from the right */
+  position: fixed;
+  bottom: 100px; /* Adjust distance from the bottom */
+  right: 25px; /* Adjust distance from the right */
 }
 
-#white_box {
-    width: 95%;
-    height: 77%;
-    background: white;
-    border-radius: 30px;
-    margin: 0 auto; /* Center horizontally */
-    display: flex;
-    justify-content: center; /* Horizontally center */
+.search_results {
+  width: 100%;
+  max-width: 500px; /* Adjust maximum width as needed */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text within the search bar */
 }
+
+
+.go_back {
+  color: #BCFF31;
+  margin-top: 20px;
+  margin-left: 10px; /* Adjust as needed for positioning */
+}
+  
+  .underline {
+    text-decoration: underline;
+  }
+  
+  

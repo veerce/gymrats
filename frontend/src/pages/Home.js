@@ -3,79 +3,75 @@ import "../style/homestyles.css";
 import BasicHeader from '../components/BasicHeader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {StandardButton, WorkoutLink} from '../components/Buttons.js';
+import {StandardButton, StandardYellowButton, WorkoutLink} from '../components/Buttons.js';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFireFlameCurved, faTrophy, faMedal} from '@fortawesome/free-solid-svg-icons';
 
+import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Home = ({username}) => {
-  let display_title = 'Welcome back, Veer' + username
+  let display_title = 'Welcome back, Veer'; // needs to be changed
+  const percentage = 70; // this will need to be the occupancy of the top saved gym
+  const gym_name = "Dodge Fitness Center";
   return (
     <div className="container g-0">
-      <BasicHeader title={display_title} />
+      <BasicHeader title={display_title}/>
+      <OccupancyTracker percent={percentage} gym={gym_name}/>
       <GetStarted />
-      <Achievements />
       <RecentWorkouts />
     </div>
   )
 };
 
+const OccupancyTracker = ({percent, gym}) => {
+  return (
+    <div id="occupancy_tracker">
+      <div id="progress_bar">
+        <CircularProgressbar
+          value={percent}
+          strokeWidth={8}
+          text={`${percent}%`}
+          styles={buildStyles({
+            textSize: "25px",
+            textWeight: "800",
+            textFont: "Bariol, sans-serif",
+            textColor: "white",
+            pathColor: "#BCFF31",
+            trailColor: "#131738"
+          })}
+        />
+      </div>
+      <div>
+        <div id="gym_name_progressbar">
+          {gym}
+        </div>
+        <div id="view_details" onClick={() => console.log("Viewing Details")}>
+          View Details
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const GetStarted = () => {
   return (
-    <div id="get_started">
-      <div id="text_box">Let's get started</div>
-      <div id="start_workout">
-        <StandardButton text="Start a Workout" />
-      </div>
+    <div className='centered_container padding_top_bottom'>
+      <StandardYellowButton text="IT'S GO TIME" />
     </div> 
   )
 }
 
-const Achievements = () => {
-  return (
-    <div id="achievements">
-      <div id="text_box">Achievements</div>
-      <div id="badges">
-        <Badge title="Gym Streak" icon="fire"/>
-        <Badge title="Mile PR" icon="trophy"/>
-      </div>
-    </div>
-  )
-}
-
-const Badge = ({ title, icon }) => {
-  let iconElement; // Variable to store the FontAwesomeIcon component
-
-  // Use switch statement for conditional logic
-  switch (icon) {
-    case 'fire':
-      iconElement = <FontAwesomeIcon icon={faFireFlameCurved} style={{ color: '#FF8D75' }} size="6x"/>;
-      break;
-    case 'trophy':
-      iconElement = <FontAwesomeIcon icon={faTrophy} style={{ color: '#F78CBD' }} size="6x"/>;
-      break;
-    default:
-      // If no matching icon, set a default value or handle as needed
-      iconElement = <FontAwesomeIcon icon={faMedal} style={{color: "#000000",}} size="6x"/>;
-      break;
-  }
-
-  return (
-    <div className="badge">
-      <div className="icon">{iconElement}</div>
-      <div className="badge_title">{title}</div>
-    </div>
-  );
-};
-
 const RecentWorkouts = () => {
   return (
-    <div id="achievements">
-      <div id="text_box">Recent Workouts</div>
-      <div id="previous_workouts">
+    <div className='width_span_container centered-container'>
+      <div id="recent_title" className='left_aligned_text width_span_container'>Recent Workouts</div>
+      <div className='centered-container'>
+        <WorkoutLink datetime="Oct 29, 2023 2:10 PM" length="20:15 mins" />
         <WorkoutLink datetime="Oct 29, 2023 2:10 PM" length="20:15 mins" />
       </div>
     </div>
+
   )
 }
 

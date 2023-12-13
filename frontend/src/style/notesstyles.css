@@ -5,7 +5,17 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    background-color: #F8F7F7;
+    background-color: #131738;
     position: relative;
     align-items: center; /* Vertically center */
-}
+  }
+  
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content at the top */
+    margin-top: 20px; /* Adjust as needed for spacing */
+  }
+  
