@@ -60,8 +60,8 @@ function App() {
     <div>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Home username={userData.name}/>} />
-        <Route path="/home" element={<Home username={userData.name}/>} />
+        <Route path="/" element={<Home user={userData}/>} />
+        <Route path="/home" element={<Home user={userData}/>} />
         <Route path="/occupancy" element={<Occupancy />} />
         <Route path="/occupancydetails" element={<OccupancyDetails />}/>
         <Route path="/equipmentall" element={<EquipmentAll />}/>

@@ -39,7 +39,7 @@ def get_user_workouts(user_id, limit):
 		return jsonify({"error": str(e)}), 500
 
 # Return all the data regarding a specific gym
-@app.route('gyms/<int:gym_id>')
+@app.route('/gyms/<int:gym_id>')
 def get_gym_data(gym_id):
 	try:
 		data = db.get_gym_data(gym_id)
