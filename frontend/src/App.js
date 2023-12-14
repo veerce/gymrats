@@ -19,47 +19,49 @@ import { useState, useEffect } from "react";
 
 function App() {
 
-  const [data, setdata] = useState({
-    name: "",
-    email: "",
-    age: 0,
-    account_number: "",
+  const [userData, setUserData] = useState({
+    userId: null,
+    firstName: "",
+    lastName: "",
+    savedGyms: []
   });
 
+  const user_id = 1; // THIS DETERMINES WHICH USER IS LOGGED IN
+
   useEffect(() => {
-      fetch("/data")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        if (data) {
-          setdata({
-            name: data.Name,
-            email: data.Email,
-            age: data.Age,
-            account_number: data.AccountNumber,
-          });
-          console.log(data);
-        } else {
-          console.error('Empty response or invalid JSON format');
-          // Handle empty or invalid response as needed
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-        // Handle error conditions, like network issues or failed requests
-      });  
+    fetch(`/data/${user_id}`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      if (data) {
+        setUserData({
+          userId: data.user_id,
+          firstName: data.first_name,
+          lastName: data.last_name,
+          savedGyms: data.saved
+        });
+        console.log(data);
+      } else {
+        console.error('Empty response or invalid JSON format');
+        // Handle empty or invalid response as needed
+      }
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+      // Handle error conditions, like network issues or failed requests
+    });  
   }, []);
 
   return (
     <div>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Home username={data.name}/>} />
-        <Route path="/home" element={<Home username={data.name}/>} />
+        <Route path="/" element={<Home username={userData.name}/>} />
+        <Route path="/home" element={<Home username={userData.name}/>} />
         <Route path="/occupancy" element={<Occupancy />} />
         <Route path="/occupancydetails" element={<OccupancyDetails />}/>
         <Route path="/equipmentall" element={<EquipmentAll />}/>
