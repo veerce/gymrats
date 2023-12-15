@@ -1,8 +1,8 @@
 import sqlite3
+from flask import g
 
 class Database:
     def __init__(self, db_name):
-        print(f"Connecting to database: {db_name}")
         self.db_name = db_name
         self.conn = sqlite3.connect(self.db_name)
         self.cursor = self.conn.cursor()
@@ -10,17 +10,26 @@ class Database:
     def close_connection(self):
         self.conn.close()
 
-    def get_all_users(self):
-        self.cursor.execute("SELECT * FROM Users")
+    def execute_query(self, query, params=None):
+        self.cursor.execute(query, params)
+        self.conn.commit()
+    
+    def fetch_data(self, query, params=None):
+        self.execute_query(query, params)
         data = self.cursor.fetchall()
-        print(f"data: {data}")
         return data
 
+    def get_all_users(self):
+        query = "SELECT * FROM Users"
+        return self.fetch_data(query)
+
     def get_user_data(self, user_id):
-        self.cursor.execute("SELECT * FROM Users WHERE user_id = ?", (user_id,))
-        data = self.cursor.fetchall()
-        print(f"data: {data}")
-        return data
+        try:
+            query = "SELECT * FROM Users WHERE user_id = ?"
+            return self.fetch_data(query, (user_id,))
+        except Exception as e:
+            print(f"Error in get_user_data: {str(e)}")
+            raise  # Re-raise the exception to see the full traceback
     
     def get_prev_workouts(self, user_id, limit=None):
         # Base query with ORDER BY clause to sort by date and time in descending order

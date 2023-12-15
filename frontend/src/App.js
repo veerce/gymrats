@@ -39,22 +39,18 @@ function App() {
     })
     .then((data) => {
       if (data) {
-        console.log("Data received:", data);
         setUserData({
-          userId: data.user_id,
-          firstName: data.first_name,
-          lastName: data.last_name,
-          savedGyms: data.saved
+          userId: data[0][0],
+          firstName: data[0][1],
+          lastName: data[0][2],
+          savedGyms: data[0][3]
         });
-        console.log(data);
       } else {
         console.error('Empty response or invalid JSON format');
-        // Handle empty or invalid response as needed
       }
     })
     .catch((error) => {
       console.error('Error fetching data:', error);
-      // Handle error conditions, like network issues or failed requests
     });  
   }, []);
 

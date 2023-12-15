@@ -1,6 +1,6 @@
 # code is from https://www.geeksforgeeks.org/how-to-connect-reactjs-with-flask-api/
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, g
 from flask_cors import CORS
 import datetime
 from dataservice import *
@@ -11,13 +11,24 @@ x = datetime.datetime.now()
 app = Flask(__name__)
 CORS(app)
 
-# create a database object
-db = Database('workout_app.db')
+# Function to get the database connection    
+def get_db():
+	if 'db' not in g:
+		g.db = Database('workout_app.db')
+		print("Database connection")
+	return g.db
 
+# Function to close the database connection
+def close_db(e=None):
+    db = g.pop('db', None)
+    if db is not None:
+        db.close_connection()
+		
 # Route for getting all user data 
 @app.route('/users/<int:user_id>')
 def get_user_data(user_id):
     try:
+        db = get_db()  # Get the database connection from g
         data = db.get_user_data(user_id)
         if data:
             return jsonify(data)
@@ -59,6 +70,7 @@ def get_gym_data(gym_id):
 @app.route('/gyms/<int:gym_id>/occupancy')
 def get_gym_occupancy(gym_id):
 	try:
+		db = get_db()
 		data = db.get_gym_occupancy(gym_id)
 		if data:
 			return jsonify(data)
@@ -69,7 +81,4 @@ def get_gym_occupancy(gym_id):
 	
 # Running app
 if __name__ == '__main__':
-    try:
-        app.run(debug=True)
-    finally:
-        db.close_connection()
+    app.run(debug=True)
