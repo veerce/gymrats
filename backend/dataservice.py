@@ -2,6 +2,7 @@ import sqlite3
 
 class Database:
     def __init__(self, db_name):
+        print(f"Connecting to database: {db_name}")
         self.db_name = db_name
         self.conn = sqlite3.connect(self.db_name)
         self.cursor = self.conn.cursor()
@@ -12,11 +13,13 @@ class Database:
     def get_all_users(self):
         self.cursor.execute("SELECT * FROM Users")
         data = self.cursor.fetchall()
+        print(f"data: {data}")
         return data
 
     def get_user_data(self, user_id):
         self.cursor.execute("SELECT * FROM Users WHERE user_id = ?", (user_id,))
         data = self.cursor.fetchall()
+        print(f"data: {data}")
         return data
     
     def get_prev_workouts(self, user_id, limit=None):

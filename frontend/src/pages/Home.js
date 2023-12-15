@@ -10,8 +10,9 @@ import {faFireFlameCurved, faTrophy, faMedal} from '@fortawesome/free-solid-svg-
 import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const Home = ({username}) => {
-  let display_title = 'Welcome back, Veer'; // needs to be changed
+const Home = ({user}) => {
+  console.log("User data:", user);
+  let display_title = `Welcome back, ${user.firstName}`; // needs to be changed
   const percentage = 70; // this will need to be the occupancy of the top saved gym
   const gym_name = "Dodge Fitness Center";
   return (

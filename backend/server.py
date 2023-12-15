@@ -1,6 +1,7 @@
 # code is from https://www.geeksforgeeks.org/how-to-connect-reactjs-with-flask-api/
 
 from flask import Flask, jsonify
+from flask_cors import CORS
 import datetime
 from dataservice import *
 
@@ -8,6 +9,7 @@ x = datetime.datetime.now()
 
 # Initializing flask app
 app = Flask(__name__)
+CORS(app)
 
 # create a database object
 db = Database('workout_app.db')
@@ -42,13 +44,16 @@ def get_user_workouts(user_id, limit):
 @app.route('/gyms/<int:gym_id>')
 def get_gym_data(gym_id):
 	try:
+		print("Fetching user data...")
 		data = db.get_gym_data(gym_id)
+		print("Data:", data)
 		if data:
 			return jsonify(data)
 		else:
 			return jsonify({"message": "No gyms found"}), 404
 	except Exception as e:
-		return jsonify({"error: str(e)"}), 500
+		print(f"Error fetching user data: {str(e)}")
+		return jsonify({"error": str(e)}), 500
 	
 # Return the occupancy rate of a specific gym
 @app.route('/gyms/<int:gym_id>/occupancy')
@@ -64,4 +69,7 @@ def get_gym_occupancy(gym_id):
 	
 # Running app
 if __name__ == '__main__':
-	app.run(debug=True)
+    try:
+        app.run(debug=True)
+    finally:
+        db.close_connection()

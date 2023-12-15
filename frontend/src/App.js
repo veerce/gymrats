@@ -29,7 +29,8 @@ function App() {
   const user_id = 1; // THIS DETERMINES WHICH USER IS LOGGED IN
 
   useEffect(() => {
-    fetch(`/data/${user_id}`)
+    console.log("client: Fetching user data...");
+    fetch(`/users/${user_id}`)
     .then((res) => {
       if (!res.ok) {
         throw new Error('Network response was not ok');
@@ -38,6 +39,7 @@ function App() {
     })
     .then((data) => {
       if (data) {
+        console.log("Data received:", data);
         setUserData({
           userId: data.user_id,
           firstName: data.first_name,
