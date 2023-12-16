@@ -24,11 +24,11 @@ def close_db(e=None):
     if db is not None:
         db.close_connection()
 		
-# Route for getting all user data 
+# Route for getting 1 user's data
 @app.route('/users/<int:user_id>')
 def get_user_data(user_id):
     try:
-        db = get_db()
+        db = get_db()  # Get the database connection from g
         data = db.get_user_data(user_id)
         if data:
             return jsonify(data)
@@ -36,7 +36,8 @@ def get_user_data(user_id):
             return jsonify({"get_user_data error"}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
+	
+
 # Route for getting all user's previous workouts, with an optional limit 
 @app.route('/workouts/<int:user_id>/', defaults={'limit': None})
 @app.route('/workouts/<int:user_id>/<int:limit>')
@@ -56,9 +57,8 @@ def get_user_workouts(user_id, limit):
 @app.route('/gyms/<int:gym_id>')
 def get_gym_data(gym_id):
 	try:
-		db = get_db()
+		db = get_db() 
 		data = db.get_gym_data(gym_id)
-		print("Data:", data)
 		if data:
 			return jsonify(data)
 		else:
