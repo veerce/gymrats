@@ -70,6 +70,11 @@
       position: relative;
   }
   
+  .padding_top_bottom {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+
   .yellow-container {
     background-color: #BCFF31;
     padding: 30px;

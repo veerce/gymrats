@@ -14,8 +14,8 @@ const Profile = ({ username }) => {
   let display_title = 'Previous Workouts';
   return (
     <div className="container g-0">
-      <BasicHeader title={display_title} />
-      <SearchBar />
+      <BasicHeader title={display_title}/>
+      <SearchBar/>
       <Routes>
         <Route path="/" element={<CalendarObj />} />
         <Route path="/workout-details/:date" element={<WorkoutDetails />} />

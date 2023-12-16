@@ -4,13 +4,11 @@ import BasicHeader from '../components/BasicHeader';
 import {OccupancyQuickView, AddButton} from '../components/Buttons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
-import { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
 import { Outlet } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { faC } from '@fortawesome/free-solid-svg-icons';
 
-const Occupancy = ({user}) => {
 const Occupancy = ({user}) => {
   const navigate = useNavigate();
 
@@ -31,8 +29,6 @@ const Occupancy = ({user}) => {
   );
 };
 
-// this is the default occupancy home page
-export const OccupancyHome = ({user}) => {
 // this is the default occupancy home page
 export const OccupancyHome = ({user}) => {
   const navigate = useNavigate();
@@ -97,7 +93,6 @@ export const OccupancyHome = ({user}) => {
         />
       )}
     </div>
-  );
   );
 }
 
