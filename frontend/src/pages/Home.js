@@ -12,7 +12,7 @@ import 'react-circular-progressbar/dist/styles.css';
 
 const Home = ({user}) => {
   console.log("User data:", user);
-  let display_title = `Welcome back, ${user.firstName}`; // needs to be changed
+  let display_title = `Welcome back, ${user.firstName}`; 
   const percentage = 70; // this will need to be the occupancy of the top saved gym
   const gym_name = "Dodge Fitness Center";
   return (

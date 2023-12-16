@@ -26,11 +26,10 @@ function App() {
     savedGyms: []
   });
 
-  const user_id = 1; // THIS DETERMINES WHICH USER IS LOGGED IN
-
+  const userId = 1
   useEffect(() => {
     console.log("client: Fetching user data...");
-    fetch(`/users/${user_id}`)
+    fetch(`/users/${userId}`)
     .then((res) => {
       if (!res.ok) {
         throw new Error('Network response was not ok');
