@@ -43,3 +43,8 @@
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
   }
+
+  .padding_top_bottom {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }

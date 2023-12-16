@@ -13,11 +13,12 @@ import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Home = ({ user }) => {
-  const gym_id = user.savedGyms[0];
+  const gym_id = user.savedGyms;
+  console.log(user);
   const [favGymData, setGymData] = useState({
     gymId: gym_id,
     gymName: "",
-    gymOccupancy: null,
+    gymOccupancy: 70,
   });
 
   useEffect(() => {

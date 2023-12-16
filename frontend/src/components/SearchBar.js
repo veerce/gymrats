@@ -14,7 +14,7 @@ function SearchBar({placeholder_text}) {
 
     return (
         <div className="searchbox">
-            <div className="search-container">
+            <div className="search-container ">
                 <div id="magnifying_glass">
                     <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#000000",}} size="1x"/>
                 </div>
