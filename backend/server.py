@@ -1,6 +1,6 @@
 # code is from https://www.geeksforgeeks.org/how-to-connect-reactjs-with-flask-api/
 
-from flask import Flask, jsonify, g
+from flask import Flask, jsonify, g, request
 from flask_cors import CORS
 import datetime
 from dataservice import *
@@ -80,6 +80,11 @@ def get_gym_occupancy(gym_id):
 	except Exception as e:
 		return jsonify({"error: str(e)"}), 500
 	
+@app.route('/exercise/<int:workout_id>', methods=['POST'])
+def add_exercise(workout_id):
+	pass
+
+
 # Running app
 if __name__ == '__main__':
     app.run(debug=True)

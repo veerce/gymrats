@@ -85,6 +85,16 @@ class Database:
         print("Occupancy Rate", occupancy_rate)
 
         return occupancy_rate
+    
+    def add_exercise(self, workout_id, equipment_id, exercise_name, sets=None, reps=None, weight=None, duration=None, intensity=None):
+        query = """
+            INSERT INTO Exercises (workout_id, equipment_id, exercise_name, sets, reps, weight, duration_minutes, intensity)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """ 
+                    
+        self.cursor.execute(query, (workout_id, equipment_id, exercise_name, sets, reps, weight, duration, intensity))
+        self.conn.commit()
+        return self.cursor.lastrowid
 
 
 def pretty_print(data):
@@ -121,6 +131,9 @@ def main():
 
     print('----------------------------------------------------------------')
     print(db.get_gym_occupancy(1))
+
+    print('----------------------------------------------------------------')
+    print(db.add_exercise(1, 4, "Run", duration=30, intensity=6))
 
     db.close_connection()
 
