@@ -1,5 +1,5 @@
 
-import React, { useState }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import "../style/workoutdetailsstyle.css";
 import "../style/buttonstyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,26 +15,42 @@ const WorkoutDetails = ({ username }) => {
   return (
     <div className="workout_details">
       <BasicHeader title={display_machine} />
-      <TimeElapsed />
-      <CurrentEquipment />
-      <CheckEquipment />
-      <EndButton />
+        <TimeElapsed />
+        <CurrentEquipment />
+        <CheckEquipment />
+        <EndButton />
     </div>
   );
 };
 
 const TimeElapsed = () => {
+  const [timeElapsed, setTimeElapsed] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeElapsed(prevTime => prevTime + 1);
+    }, 1000); // Update every second
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, []);
+
+  // Format the time in minutes and seconds
+  const minutes = Math.floor(timeElapsed / 60);
+  const seconds = timeElapsed % 60;
+  const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
   return (
     <div id="time-container">
-        <div className="yellow-container">
+      <div className="yellow-container">
         <CenteredContent>
-          <div id="text_box_time">12:17</div>
+          <div id="text_box_time">{formattedTime}</div>
           <div id="text_box_mins">MINS</div>
-          </CenteredContent>
-        </div>
+        </CenteredContent>
+      </div>
     </div>
-  )
-}
+  );
+};
+
 
 const CurrentEquipment = () => {
   const [selectedWorkout, setSelectedWorkout] = useState('treadmill');
@@ -118,11 +134,18 @@ const CenteredContent = ({ children }) => {
 
 
 const CheckEquipment = ({CheckEquipment}) => {
+  const navigate = useNavigate();
+
+  const handleEquipmentClick = () => {
+    console.log(`Equipment clicked`);
+    navigate('/equipmentall');
+  };
+
   return (
     <CenteredContent>
     <div id="CheckAvailability" className="button-container">
       <div id="check_availability">
-        <CheckEquipmentButton text="Check Equipment Availability"/>
+        <CheckEquipmentButton text="Check Equipment Availability" onClick={handleEquipmentClick}/>
       </div>
     </div>
     </CenteredContent>

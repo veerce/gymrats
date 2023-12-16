@@ -101,6 +101,15 @@ export const StartWorkoutButton = ({ text, onClick }) => {
   );
 }
 
+export const ViewEquipmentDetails = ({ text, onClick }) => {
+  return (
+    <button className="view-equipment-details-button" onClick={onClick}>
+      {text}
+    </button>
+  );
+}
+
+
 export const CheckEquipmentButton = ({ text, onClick }) => {
   return (
     <button className="checkequipment-button" onClick={onClick}>

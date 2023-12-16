@@ -21,7 +21,6 @@ const Occupancy = ({user}) => {
     <div className="container">
       <BasicHeader title="Your Gyms" />
       <OccupancyHome user={user}/>
-      <OccupancyHome user={user}/>
       <div id="add_button">
         <AddButton onClick={handleAddGymClick} />
       </div>
@@ -29,8 +28,9 @@ const Occupancy = ({user}) => {
   );
 };
 
+
 // this is the default occupancy home page
-export const OccupancyHome = ({user}) => {
+const OccupancyHome = ({user}) => {
   const navigate = useNavigate();
 
   const goToOccupancyPage = () => {
@@ -94,6 +94,7 @@ export const OccupancyHome = ({user}) => {
       )}
     </div>
   );
-}
+};
+
 
 export default Occupancy;

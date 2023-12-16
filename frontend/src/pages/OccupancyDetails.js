@@ -1,14 +1,14 @@
 import React from 'react';
 import '../style/occupancystyles.css';
 import BasicHeader from '../components/BasicHeader';
-import {OccupancyQuickView, AddGym} from '../components/Buttons';
+import {OccupancyQuickView, AddGym, ViewEquipmentDetails} from '../components/Buttons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import { useLocation } from 'react-router-dom';
 // import {CurrentOccupancy} from '../components/Buttons';
 import {CurrentOccupancy, ViewOccupancyButton} from '../components/Cards';
-// import {ViewOccupancyButton, AddNote} from '../components/Buttons';
+import {StartWorkoutButton} from '../components/Buttons';
 
 import DailyCapacityTrends from '../components/BarChart';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
@@ -81,7 +81,7 @@ const OccupancyDetails = () => {
         <div className="container">
           <BasicHeader title="Dodge Fitness Center" subheader="OPEN 6AM - 12AM"/>  
           <CurrentOccupancy occ="70" /> 
-          <ViewOccupancyButton title="View Occupancy by Equipment" onClick={handleEquipmentClick}/>
+          <ViewEquipmentDetails text="View Occupancy by Equipment" onClick={handleEquipmentClick}/>
           <div>
             <DailyCapacityTrends chartData={data} />
           </div>

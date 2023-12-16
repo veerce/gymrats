@@ -24,14 +24,15 @@ const Home = ({ user }) => {
   useEffect(() => {
     const fetchGymDetails = async () => {
       try {
-        const occupancyResponse = await fetch(`/gyms/${gym_id}/occupancy`);
+        console.log("fetching occupancy data...")
+        const occupancyResponse = await fetch(`http://127.0.0.1:5000/gyms/${gym_id}/occupancy`);
         const occupancyData = await occupancyResponse.json();
         setGymData((prevData) => ({
           ...prevData,
           gymOccupancy: Math.ceil(occupancyData),
         }));
-
-        const gymResponse = await fetch(`/gyms/${gym_id}`);
+        console.log("fetching gym data...")
+        const gymResponse = await fetch(`http://127.0.0.1:5000/gyms/${gym_id}`);
         const data = await gymResponse.json();
         console.log("setting data", data[0][1]);
         setGymData((prevData) => ({
@@ -117,7 +118,7 @@ const RecentWorkouts = ({ userId }) => {
     const fetchUserWorkouts = async () => {
       try {
         // Fetch recent workouts for the user with a limit of 2
-        const response = await fetch(`/workouts/${userId}/2`);
+        const response = await fetch(`http://127.0.0.1:5000/workouts/${userId}/2`);
         const data = await response.json();
         console.log("workout data", data);
         if (data && data.length > 0) {
