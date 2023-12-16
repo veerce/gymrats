@@ -29,7 +29,7 @@ function App() {
   const userId = 1
   useEffect(() => {
     console.log("client: Fetching user data...");
-    fetch(`/users/${userId}`)
+    fetch(`http://127.0.0.1:5000/users/${userId}`)
     .then((res) => {
       if (!res.ok) {
         throw new Error('Network response was not ok');
@@ -59,7 +59,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home user={userData}/>} />
         <Route path="/home" element={<Home user={userData}/>} />
-        <Route path="/occupancy" element={<Occupancy />} />
+        <Route path="/occupancy" element={<Occupancy user={userData}/>} />
         <Route path="/occupancydetails" element={<OccupancyDetails />}/>
         <Route path="/equipmentall" element={<EquipmentAll />}/>
         <Route path="/startworkout" element={<StartWorkout />} />

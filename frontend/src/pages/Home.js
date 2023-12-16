@@ -22,7 +22,7 @@ const Home = ({ user }) => {
   console.log("gymid", gym_id)
   useEffect(() => {
     if (gym_id !== undefined) {
-      fetch(`/gyms/${gym_id}/occupancy`)
+      fetch(`http://127.0.0.1:5000/gyms/${gym_id}/occupancy`)
         .then((res) => {
           if (!res.ok) {
             throw new Error('Network response was not ok');
