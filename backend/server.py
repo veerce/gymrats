@@ -28,7 +28,7 @@ def close_db(e=None):
 @app.route('/users/<int:user_id>')
 def get_user_data(user_id):
     try:
-        db = get_db()  # Get the database connection from g
+        db = get_db()
         data = db.get_user_data(user_id)
         if data:
             return jsonify(data)
@@ -43,6 +43,7 @@ def get_user_data(user_id):
 def get_user_workouts(user_id, limit):
 	# this route will get all of 1 specific user's previous workouts, with an optional limit
 	try:
+		db = get_db()
 		data = db.get_user_workouts(user_id, limit)
 		if data:
 			return jsonify(data)
@@ -55,7 +56,7 @@ def get_user_workouts(user_id, limit):
 @app.route('/gyms/<int:gym_id>')
 def get_gym_data(gym_id):
 	try:
-		print("Fetching user data...")
+		db = get_db()
 		data = db.get_gym_data(gym_id)
 		print("Data:", data)
 		if data:
