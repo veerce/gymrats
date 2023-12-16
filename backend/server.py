@@ -44,7 +44,7 @@ def get_user_workouts(user_id, limit):
 	# this route will get all of 1 specific user's previous workouts, with an optional limit
 	try:
 		db = get_db()
-		data = db.get_user_workouts(user_id, limit)
+		data = db.get_prev_workouts(user_id, limit)
 		if data:
 			return jsonify(data)
 		else: 

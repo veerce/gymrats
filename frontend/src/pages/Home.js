@@ -118,7 +118,7 @@ const RecentWorkouts = ({ userId }) => {
         // Fetch recent workouts for the user with a limit of 2
         const response = await fetch(`/workouts/${userId}/2`);
         const data = await response.json();
-        
+        console.log("workout data", data);
         if (data && data.length > 0) {
           setWorkouts(data);
         } else {
@@ -140,9 +140,9 @@ const RecentWorkouts = ({ userId }) => {
       <div className='centered-container'>
         {workouts.map((workout) => (
           <WorkoutLink
-            key={workout.id}
-            datetime={`${workout.date} ${workout.time}`}
-            length={`${workout.duration} mins`}
+            key={workout[0]}
+            datetime={`${workout[2]} ${workout[3]}`}
+            length={`${workout[3]} mins`}
           />
         ))}
       </div>

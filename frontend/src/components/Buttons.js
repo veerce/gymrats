@@ -28,7 +28,7 @@ export const WorkoutLink = ({ datetime, length }) => {
 
   const handleWorkoutLinkClick = () => {
     // Construct the URL with datetime and length as parameters
-    const url = `/workout-details?datetime=${encodeURIComponent(datetime)}&length=${encodeURIComponent(length)}`;
+    const url = `/workout-summary?datetime=${encodeURIComponent(datetime)}&length=${encodeURIComponent(length)}`;
 
     // Navigate to the new page
     navigate(url);
@@ -52,7 +52,8 @@ export const WorkoutLink = ({ datetime, length }) => {
 export const OccupancyQuickView = ({gym_name, open, hours, occ, onClick}) => {
   let open_status = "CLOSED";
   let status_style = "closed";
-  if (open==="True") {
+  console.log('open', open)
+  if (open===1) {
     open_status = "OPEN";
     status_style = "open";
   }
@@ -67,7 +68,7 @@ export const OccupancyQuickView = ({gym_name, open, hours, occ, onClick}) => {
         </div>
       </div>
       <div id="percentage">
-        <div className="circle">{occ}</div>
+        <div className="circle">{`${occ}%`}</div>
       </div>
     </button>
     
