@@ -60,10 +60,17 @@ const VectorImage = () => {
 
 
 const CheckAvailability = ({CheckAvailability}) => {
+  const navigate = useNavigate();
+
+  const handleEquipmentClick = () => {
+    console.log(`Equipment clicked`);
+    navigate('/equipmentall');
+  };
+
   return (
     <div id="CheckAvailability" className="button-container">
       <div id="check_availability">
-        <CheckEquipmentButton text="Check Equipment Availability"/>
+        <CheckEquipmentButton text="Check Equipment Availability" onClick={handleEquipmentClick}/>
       </div>
     </div>
   );
