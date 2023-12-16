@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "../style/buttonstyles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell, faPlus, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom'; 
 
 
 
@@ -14,26 +15,38 @@ export const StandardButton = ({ text }) => {
     )
 }
 
-export const StandardYellowButton = ({ text }) => {
+export const StandardYellowButton = ({ text, onClick }) => {
   return (
-    <button type="button" className="startworkout-button">{text}</button> 
-  )
-}
+    <button type="button" className="startworkout-button" onClick={onClick}>
+      {text}
+    </button>
+  );
+};
 
 export const WorkoutLink = ({ datetime, length }) => {
-    return (
-      <button type="button" id="standard_workout_style" className="btn btn-secondary">
-        <div id="inner-div">
-            <div id="inner-div-left">
-                <FontAwesomeIcon icon={faDumbbell} size="4x" style={{color: "#FFFFFF",}}/>
-            </div>
-          <div id="inner-div-right">
-            <div className="inner_div_datetime">{datetime}</div>
-            <div className="inner_div_datetime">{length}</div>
-          </div>
+  const navigate = useNavigate();
+
+  const handleWorkoutLinkClick = () => {
+    // Construct the URL with datetime and length as parameters
+    const url = `/workout-details?datetime=${encodeURIComponent(datetime)}&length=${encodeURIComponent(length)}`;
+
+    // Navigate to the new page
+    navigate(url);
+  };
+
+  return (
+    <button type="button" id="standard_workout_style" className="btn btn-secondary" onClick={handleWorkoutLinkClick}>
+      <div id="inner-div">
+        <div id="inner-div-left">
+          <FontAwesomeIcon icon={faDumbbell} size="4x" style={{ color: "#FFFFFF" }} />
         </div>
-      </button>
-    );
+        <div id="inner-div-right">
+          <div className="inner_div_datetime">{datetime}</div>
+          <div className="inner_div_datetime">{length}</div>
+        </div>
+      </div>
+    </button>
+  );
 }
 
 export const OccupancyQuickView = ({gym_name, open, hours, occ, onClick}) => {
