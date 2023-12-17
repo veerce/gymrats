@@ -22,7 +22,8 @@ const WorkoutSummary = () => {
 
   // Get datetime and length from the query parameters
   const datetime = params.get('datetime');
-  const length = params.get('length');
+  const workoutLength = params.get('length'); // Rename to avoid conflict with global 'length'
+
 
   return (
     <div className="container g-0">
@@ -30,6 +31,7 @@ const WorkoutSummary = () => {
       <div id='date_and_time' className='left_aligned_text width_span_container padding_top_bottom'>
         {datetime}
       </div>
+      <WorkoutLabel datetime={datetime} length={workoutLength} />
     </div>
   );
 };
@@ -50,22 +52,22 @@ const LeftHeader = ({title, subheader}) => {
     )
 };
 
-const workoutLabel = () => {
-    return (
-        <div id="instructions-container">
-            <div className="white-container">
-                <div id="inner-div">
-                    <div id="inner-div-left">
-                    <FontAwesomeIcon icon={faDumbbell} size="4x" style={{ color: "#FFFFFF" }} />
-                    </div>
-                    <div id="inner-div-right">
-                    <div className="inner_div_datetime">{datetime}</div>
-                    <div className="inner_div_datetime">{length}</div>
-                    </div>
-                </div>
-            </div>
+const WorkoutLabel = ({ datetime, length }) => {
+  return (
+    <div id="instructions-container">
+      <div className="white-container">
+        <div id="inner-div">
+          <div id="inner-div-left">
+            <FontAwesomeIcon icon={faDumbbell} size="4x" style={{ color: "#FFFFFF" }} />
+          </div>
+          <div id="inner-div-right">
+            <div className="inner_div_datetime">{datetime}</div>
+            <div className="inner_div_datetime">{length}</div>
+          </div>
         </div>
-      );
+      </div>
+    </div>
+  );
 };
 
 export default WorkoutSummary;

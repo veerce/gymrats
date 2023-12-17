@@ -31,7 +31,7 @@ const Instructions = () => {
         <CenteredContent>
           <VectorImage id="phone_nfc" />
           <div id="text_box_head">To Begin Workout:</div>
-          <div id="text_box_1">1. Tap the NFC tag located on the equipment</div>
+          <div id="text_box_1">1. Tap the NFC tag on the equipment</div>
           <div id="text_box_2">2. Conduct your workout as usual</div>
           </CenteredContent>
         </div>

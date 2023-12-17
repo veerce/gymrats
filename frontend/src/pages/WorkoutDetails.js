@@ -14,20 +14,42 @@ const WorkoutDetails = ({ username }) => {
   const { workoutId } = useParams();
   let display_machine = 'My Workout';
 
-  const [timeElapsed, setTimeElapsed] = useState(0);  
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  const [totalElapsedTime, setTotalElapsedTime] = useState(0);
+  const [isNewSession, setIsNewSession] = useState(true);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeElapsed(prevTime => prevTime + 1);
+      if (isNewSession) {
+        setTimeElapsed(prevTime => prevTime + 1);
+        setTotalElapsedTime(prevTotal => prevTotal + 1);
+      }
     }, 1000); // Update every second
 
-    return () => clearInterval(interval); // Cleanup on component unmount
-  }, []);
+    return () => clearInterval(interval);
+  }, [isNewSession]);
+
+  const handleEndEquipment = () => {
+    setIsNewSession(false);
+    setTotalElapsedTime(totalElapsedTime);
+    setTimeElapsed(0);
+  };
+
+  const handleStartNewEquipment = () => {
+    setIsNewSession(true);
+    setTimeElapsed(0);
+  };
 
   return (
     <div className="workout_details">
       <BasicHeader title={display_machine} />
         <TimeElapsed timeElapsed={timeElapsed}/>
         <CurrentEquipment />
+        {isNewSession ? (
+        <EndEquipment onEnd={handleEndEquipment} />
+      ) : (
+        <StartNewEquipment onStart={handleStartNewEquipment} />
+      )}
         <CheckEquipment />
         <EndButton workoutId={workoutId} timeElapsed={timeElapsed}/>
     </div>
@@ -133,6 +155,39 @@ const CenteredContent = ({ children }) => {
   );
 };
 
+const EndEquipment = ({ onEnd }) => {
+
+  const handleEndClick = () => {
+    console.log(`End equipment clicked`);
+    onEnd();
+  };
+
+  return (
+    <CenteredContent>
+    <div id="CheckAvailability" className="button-container">
+      <div id="check_availability">
+        <CheckEquipmentButton text="End Current Equipment" onClick={handleEndClick}/>
+      </div>
+    </div>
+    </CenteredContent>
+  );
+}
+
+const StartNewEquipment = ({ onStart }) => {
+  const handleStartClick = () => {
+    onStart(); // Call the provided callback to start a new equipment session
+  };
+
+  return (
+    <CenteredContent>
+      <div id="StartNewEquipment" className="button-container">
+        <div id="start_new_equipment">
+          <StartWorkoutButton text="START NEW EQUIPMENT" onClick={handleStartClick} />
+        </div>
+      </div>
+    </CenteredContent>
+  );
+};
 
 const CheckEquipment = ({CheckEquipment}) => {
   const navigate = useNavigate();
