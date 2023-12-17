@@ -8,10 +8,13 @@ import TreadmillIcon from '../images/treadmill-icon.png';
 import SmithMachineIcon from '../images/smith-machine.png';
 import LegPressIcon from '../images/leg-press.png';
 import { CheckEquipmentButton, StandardButton, StartWorkoutButton } from '../components/Buttons.js';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, useParams } from 'react-router-dom'; 
 
 const WorkoutDetails = ({ username }) => {
+  const { workoutId } = useParams();
   let display_machine = 'My Workout';
+  console.log('GOT THE WORKOUT ID', workoutId)
+
   return (
     <div className="workout_details">
       <BasicHeader title={display_machine} />

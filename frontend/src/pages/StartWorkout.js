@@ -79,8 +79,25 @@ const CheckAvailability = ({CheckAvailability}) => {
 const StartThisWorkout = () => {
   const navigate = useNavigate();
 
-  const handleStartWorkout = () => {
-    navigate('/workout-details');
+  const handleStartWorkout = async () => {
+    // create backend call to get a new workout ID and pass it on to the next page
+
+      try {
+        const response = await fetch('http://127.0.0.1:5000/workouts/1', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'}
+        });
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+      const data = await response.json();
+      const workoutId = data.workout_id;
+      console.log('GOT WORKOUT ID: ' + workoutId)
+
+      navigate(`/workout-details/${workoutId}`);
+    } catch (error) {
+      console.error('Error starting new workout:', error);
+    }
   };
 
   return (
