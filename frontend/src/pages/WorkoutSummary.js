@@ -61,27 +61,8 @@ const WorkoutSummary = () => {
             <ExerciseLabel exercise_details={exercise}/>
             ))}
       </div>
-      <WorkoutLabel datetime={datetime} length={workoutLength} />
     </div>
   );
-};
-
-const workoutLabel = () => {
-    return (
-        <div id="instructions-container">
-            <div className="white-container">
-            <div id="inner-div">
-                <div id="inner-div-left">
-                    <FontAwesomeIcon icon={faDumbbell} size="4x" style={{ color: "#FFFFFF" }} />
-                </div>
-                <div id="inner-div-right">
-                    <div className="inner_div_datetime">{}</div>
-                    <div className="inner_div_datetime">{}</div>
-                </div>
-            </div>
-            </div>
-        </div>
-      );
 };
 
 const LeftContent = ({ children }) => {
