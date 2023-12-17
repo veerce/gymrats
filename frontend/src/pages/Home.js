@@ -143,6 +143,7 @@ const RecentWorkouts = ({ userId }) => {
         {workouts.map((workout) => (
           <WorkoutLink
             key={workout[0]}
+            workoutId={workout[0]}
             datetime={`${workout[2]} ${workout[3]}`}
             length={`${workout[3]} mins`}
           />

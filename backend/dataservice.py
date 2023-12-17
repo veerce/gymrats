@@ -47,9 +47,18 @@ class Database:
         self.cursor.execute(query, params)
         prev_workouts = self.cursor.fetchall()
         return prev_workouts
+    
+    def get_workout_date_time(self, workout_id):
+        query = "SELECT date, time FROM Workouts WHERE workout_id = ?"
+        result = self.fetch_data(query, (workout_id,))
 
+        if result:
+            workout_date, workout_time = result[0]
+            return {'date': workout_date, 'time': workout_time}
+        else:
+            return None
 
-    def get_workout_excercises(self, workout_id):
+    def get_workout_exercises(self, workout_id):
         query = """
             SELECT e.exercise_id, e.exercise_name, e.sets, e.reps, e.weight, e.duration_minutes, e.intensity
             FROM Exercises e

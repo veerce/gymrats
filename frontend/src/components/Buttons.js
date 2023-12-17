@@ -23,15 +23,11 @@ export const StandardYellowButton = ({ text, onClick }) => {
   );
 };
 
-export const WorkoutLink = ({ datetime, length }) => {
+export const WorkoutLink = ({ workoutId, datetime, length }) => {
   const navigate = useNavigate();
 
   const handleWorkoutLinkClick = () => {
-    // Construct the URL with datetime and length as parameters
-    const url = `/workout-summary?datetime=${encodeURIComponent(datetime)}&length=${encodeURIComponent(length)}`;
-
-    // Navigate to the new page
-    navigate(url);
+    navigate(`/workout-summary/${workoutId}`);
   };
 
   return (
