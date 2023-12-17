@@ -1,5 +1,6 @@
 import sqlite3
 from flask import g
+import datetime
 
 class Database:
     def __init__(self, db_name):
@@ -96,6 +97,32 @@ class Database:
         self.conn.commit()
         return self.cursor.lastrowid
 
+    def create_workout(self, user_id):
+        # this function will create a new entry in this table with a user_id, date, duration time of 00:00:00
+        workout_date = datetime.date.today().strftime("%Y-%m-%d")
+
+        default_time = "00:00:00"
+
+        query = """INSERT INTO Workouts (user_id, date, time)
+        VALUES (?, ?, ?)
+        """
+        self.cursor.execute(query, (user_id, workout_date, default_time))
+        self.conn.commit()
+        return self.cursor.lastrowid 
+
+    def update_workout(self, workout_id, duration):
+        # this function will update the 'time' field of the workout
+        query = """UPDATE Workouts SET time = ? WHERE workout_id = ?"""
+        try:
+            self.cursor.execute(query, (duration, workout_id))
+            self.conn.commit()
+            if self.cursor.rowcount == 0:
+                return False
+            return True
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return False
 
 def pretty_print(data):
     if not data:
@@ -132,8 +159,14 @@ def main():
     print('----------------------------------------------------------------')
     print(db.get_gym_occupancy(1))
 
-    print('----------------------------------------------------------------')
-    print(db.add_exercise(1, 4, "Run", duration=30, intensity=6))
+    # print('----------------------------------------------------------------')
+    # print(db.add_exercise(1, 4, "Run", duration=30, intensity=6))
+
+    # print('----------------------------------------------------------------')
+    # print(db.create_workout(1))
+
+    # print('----------------------------------------------------------------')
+    # print(db.update_workout(14,"11:30:00"))
 
     db.close_connection()
 

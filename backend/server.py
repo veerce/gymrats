@@ -37,10 +37,9 @@ def get_user_data(user_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 	
-
 # Route for getting all user's previous workouts, with an optional limit 
-@app.route('/workouts/<int:user_id>/', defaults={'limit': None})
-@app.route('/workouts/<int:user_id>/<int:limit>')
+@app.route('/workouts/<int:user_id>/', defaults={'limit': None}, methods=['GET'])
+@app.route('/workouts/<int:user_id>/<int:limit>', methods=['GET'])
 def get_user_workouts(user_id, limit):
 	# this route will get all of 1 specific user's previous workouts, with an optional limit
 	try:
@@ -53,7 +52,35 @@ def get_user_workouts(user_id, limit):
 	except Exception as e:
 		return jsonify({"error": str(e)}), 500
 
-# Return all the data regarding a specific gym
+# Route to create new workout in DB and to get a new workout_id
+@app.route('/workouts/<int:user_id>', methods=['POST'])
+def create_new_workout(user_id):
+	try:
+		db = get_db()
+		workout_id = db.create_workout(user_id) # creates datetime within the dataservice
+		return jsonify({"message": "Workout created successfully", "workout_id": workout_id}), 201
+	except Exception as e:
+		return jsonify({"error": str(e)}), 500	
+
+# Route to update the duration of a given workout
+@app.route('/workouts/<int:workout_id>', methods=['PUT'])
+def update_workout(workout_id):
+	data = request.json
+	if 'duration' not in data:
+			return jsonify({"error": "Duration field is missing"}), 400
+	
+	try:
+		db = get_db()
+		result = db.update_workout(workout_id, data['duration'])
+
+		if result:
+			return jsonify({"message": "Workout updated successfully"}), 200
+		else:
+			return jsonify({"error": "Workout not found or no update made"}), 404
+	except Exception as e:
+		return jsonify({"error": str(e)}), 500	
+	
+# Route to return all the data regarding a specific gym
 @app.route('/gyms/<int:gym_id>')
 def get_gym_data(gym_id):
 	try:
@@ -67,7 +94,7 @@ def get_gym_data(gym_id):
 		print(f"Error fetching user data: {str(e)}")
 		return jsonify({"error": str(e)}), 500
 	
-# Return the occupancy rate of a specific gym
+# Route to return the occupancy rate of a specific gym
 @app.route('/gyms/<int:gym_id>/occupancy')
 def get_gym_occupancy(gym_id):
 	try:
@@ -79,11 +106,26 @@ def get_gym_occupancy(gym_id):
 			return jsonify({"message": "No data found"}), 404
 	except Exception as e:
 		return jsonify({"error: str(e)"}), 500
-	
+
+# Route to add a new exercise to the exercise table
 @app.route('/exercise/<int:workout_id>', methods=['POST'])
 def add_exercise(workout_id):
-	pass
+	data = request.json
 
+	equipment_id = data.get('equipment_id')
+	exercise_name = data.get('exercise_name')
+	sets = data.get('sets')
+	reps = data.get('reps')
+	weight = data.get('weight')
+	duration = data.get('duration')
+	intensity = data.get('intensity')
+	
+	try:
+		db = get_db()
+		exercise_id = db.add_exercise(workout_id, equipment_id, exercise_name, sets, reps, weight, duration, intensity)
+		return jsonify({"message": "Exercise added successfully", "exercise_id": exercise_id}), 201
+	except Exception as e:
+		return jsonify({"error": str(e)}), 500
 
 # Running app
 if __name__ == '__main__':
