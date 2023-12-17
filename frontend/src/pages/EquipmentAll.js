@@ -27,7 +27,7 @@ const EquipmentCard = ({ name, status, timeStarted, avgTime, imageUrl }) => (
 const EquipmentSectionHeader = ({ title, link }) => (
     <div className="section-header">
       <h2>{title}</h2>
-      <Link to={link} className="see-all-link">see all &gt; </Link>
+      {/* <Link to={link} className="see-all-link">see all &gt; </Link> */}
     </div>
 );
 
@@ -45,20 +45,20 @@ const EquipmentSection = ({ title, equipments, link }) => (
 const EquipmentAll = () => {
     const cardioEquipment = [
         { name: 'Treadmill 1', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: TreadmillImage },
-        { name: 'Treadmill 2', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: TreadmillImage},
-        { name: 'Treadmill 3', status: false, timeStarted: '34 mins', avgTime: '30 mins', imageUrl: TreadmillImage},
+        { name: 'Treadmill 2', status: false, timeStarted: '34 mins', avgTime: '30 mins', imageUrl: TreadmillImage},
+        { name: 'Treadmill 3', status: false, timeStarted: '5 mins', avgTime: '30 mins', imageUrl: TreadmillImage},
     ];
     
     const weightMachines = [
         { name: 'Leg Press 1', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: LegpressImage },
         { name: 'Leg Press 2', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: LegpressImage },
-        { name: 'Leg Press 3', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: LegpressImage },
+        { name: 'Leg Press 3', status: false, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: LegpressImage },
     ];
     
     const freeWeights = [
-        { name: 'Bench 1', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: BenchImage },
-        { name: 'Bench 2', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: BenchImage },
-        { name: 'Bench 3', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: BenchImage },
+        { name: 'Bench 1', status: false, timeStarted: '9 mins', avgTime: '10 mins', imageUrl: BenchImage },
+        { name: 'Bench 2', status: false, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: BenchImage },
+        { name: 'Bench 3', status: false, timeStarted: '2 mins', avgTime: '10 mins', imageUrl: BenchImage },
     ];
     return (
         <div className="container">

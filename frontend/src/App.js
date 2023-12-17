@@ -13,6 +13,7 @@ import WorkoutDetails from './pages/WorkoutDetails';
 import GymSearch from './pages/GymSearch';
 import EquipmentCardio from './pages/EquipmentCardio';
 import WorkoutSummary from './pages/WorkoutSummary';
+import NoteDetails from './pages/NoteDetails';
 import { useState, useEffect } from "react";
 
 // react and flask connection code from 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/workout-details/:workoutId" element={<WorkoutDetails />} />
         <Route path="/gym-search" element={<GymSearch />} />
         <Route path="/equipmentcardio" element={<EquipmentCardio />} />
+        <Route path="/note-details/:note_id" element={<NoteDetails />} />
         <Route path="/workout-summary/:workoutId" element={<WorkoutSummary />} />
       </Routes>
     </div>
