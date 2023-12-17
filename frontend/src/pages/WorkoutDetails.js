@@ -14,20 +14,42 @@ const WorkoutDetails = ({ username }) => {
   const { workoutId } = useParams();
   let display_machine = 'My Workout';
 
-  const [timeElapsed, setTimeElapsed] = useState(0);  
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  const [totalElapsedTime, setTotalElapsedTime] = useState(0);
+  const [isNewSession, setIsNewSession] = useState(true);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeElapsed(prevTime => prevTime + 1);
+      if (isNewSession) {
+        setTimeElapsed(prevTime => prevTime + 1);
+        setTotalElapsedTime(prevTotal => prevTotal + 1);
+      }
     }, 1000); // Update every second
 
-    return () => clearInterval(interval); // Cleanup on component unmount
-  }, []);
+    return () => clearInterval(interval);
+  }, [isNewSession]);
+
+  const handleEndEquipment = () => {
+    setIsNewSession(false);
+    setTotalElapsedTime(totalElapsedTime);
+    setTimeElapsed(0);
+  };
+
+  const handleStartNewEquipment = () => {
+    setIsNewSession(true);
+    setTimeElapsed(0);
+  };
 
   return (
     <div className="workout_details">
       <BasicHeader title={display_machine} />
         <TimeElapsed timeElapsed={timeElapsed}/>
         <CurrentEquipment />
+        {isNewSession ? (
+        <EndEquipment onEnd={handleEndEquipment} />
+      ) : (
+        <StartNewEquipment onStart={handleStartNewEquipment} />
+      )}
         <CheckEquipment />
         <EndButton workoutId={workoutId} timeElapsed={timeElapsed}/>
     </div>
@@ -35,7 +57,6 @@ const WorkoutDetails = ({ username }) => {
 };
 
 const TimeElapsed = ({timeElapsed}) => {
-  // Format the time in minutes and seconds
   const minutes = Math.floor(timeElapsed / 60);
   const seconds = timeElapsed % 60;
   const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
@@ -58,7 +79,7 @@ const CurrentEquipment = () => {
   const handleWorkoutChange = (workout) => {
     setSelectedWorkout(workout);
   };
-  
+
   const getMachineName = () => {
     switch (selectedWorkout) {
       case 'treadmill':
@@ -74,6 +95,10 @@ const CurrentEquipment = () => {
 
   const [speed, setSpeed] = useState('');
   const [pace, setPace] = useState('');
+  const [incline, setIncline] = useState('');
+  const [sets, setSets] = useState('');
+  const [reps, setReps] = useState('');
+  const [weight, setWeight] = useState('');
 
   const handleSpeedChange = (event) => {
     const newSpeed = event.target.value;
@@ -84,7 +109,16 @@ const CurrentEquipment = () => {
   };
 
   const calculatePace = (speed) => {
-    return speed ? (60 / parseFloat(speed)).toFixed(2) : '';
+    if (speed) {
+      const paceInMinutes = 60/parseFloat(speed);
+  
+      const minutes = Math.floor(paceInMinutes);
+      const seconds = Math.round((paceInMinutes % 1) * 60);
+  
+      return `   ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    } else {
+      return '';
+    }
   };
 
   return (
@@ -108,22 +142,84 @@ const CurrentEquipment = () => {
             </CenteredContent>
           </div>
           <div className="square-container">
-              <div id="text_box_label">SPEED</div>
-              <div className="input-container">
-                <input
-                  type="text"
-                  placeholder="Enter Speed (MPH)"
-                  value={speed}
-                  onChange={handleSpeedChange}
-                />
+            {selectedWorkout === 'treadmill' && (
+              <>
+              <div className="horizontal-container">
+                <div id="text_box_label">SPEED&nbsp;</div>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    placeholder="MPH"
+                    value={speed}
+                    onChange={handleSpeedChange}
+                  />
+                </div>
+                </div>
+                <div id="text_box_mins">PACE{pace ? `${pace}` : ''}</div>
+                <div className="horizontal-container">
+                <div id="text_box_label">INCLINE&nbsp;</div>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    placeholder="#"
+                    value={incline}
+                  />
+                </div>
+                </div>
+              </>
+              
+            )}
+            {selectedWorkout !== 'treadmill' && (
+             <>
+                <div className="input-set">
+                <div className="horizontal-container">
+                  <div id="text_box_label">SETS&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      placeholder="#"
+                      value={sets}
+                      onChange={(e) => setSets(e.target.value)}
+                    />
+                  </div>
+                  </div>
+                </div>
+                <div className="input-set">
+                <div className="horizontal-container">
+                  <div id="text_box_label">REPS&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      placeholder="#"
+                      value={reps}
+                      onChange={(e) => setReps(e.target.value)}
+                    />
+                  </div>
+                  </div>
+                </div>
+                <div className="input-set">
+                <div className="horizontal-container">
+                  <div id="text_box_label">WEIGHT</div>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      placeholder="lbs/kg"
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
-              <div id="text_box_mins">PACE {pace ? `${pace} min/mile` : '---'}</div>
-            </div>
+
+              </>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };
+
 
 const CenteredContent = ({ children }) => {
   return (
@@ -133,6 +229,39 @@ const CenteredContent = ({ children }) => {
   );
 };
 
+const EndEquipment = ({ onEnd }) => {
+
+  const handleEndClick = () => {
+    console.log(`End equipment clicked`);
+    onEnd();
+  };
+
+  return (
+    <CenteredContent>
+    <div id="CheckAvailability" className="button-container">
+      <div id="check_availability">
+        <CheckEquipmentButton text="End Current Equipment" onClick={handleEndClick}/>
+      </div>
+    </div>
+    </CenteredContent>
+  );
+}
+
+const StartNewEquipment = ({ onStart }) => {
+  const handleStartClick = () => {
+    onStart(); // Call the provided callback to start a new equipment session
+  };
+
+  return (
+    <CenteredContent>
+      <div id="StartNewEquipment" className="button-container">
+        <div id="start_new_equipment">
+          <StartWorkoutButton text="START NEW EQUIPMENT" onClick={handleStartClick} />
+        </div>
+      </div>
+    </CenteredContent>
+  );
+};
 
 const CheckEquipment = ({CheckEquipment}) => {
   const navigate = useNavigate();

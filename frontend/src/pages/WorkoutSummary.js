@@ -61,6 +61,7 @@ const WorkoutSummary = () => {
             <ExerciseLabel exercise_details={exercise}/>
             ))}
       </div>
+      <WorkoutLabel datetime={datetime} length={workoutLength} />
     </div>
   );
 };

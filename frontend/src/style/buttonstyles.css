@@ -16,17 +16,18 @@
 .startworkout-button {
     background-color: #BCFF31;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 22px;
     font-family: "Bariol";
     color: #131738;
     border: 2px solid #FFFFFF;
     border-radius: 10px;
     text-align: center;
-    display: flex; /* Use Flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 350px;
     height: 50px;
+    margin-top: 10px;
 }
 
 .view-equipment-details-button {
@@ -61,6 +62,7 @@
     color: #ffffff;
     border: 2px solid #FFFFFF;
     border-radius: 10px;
+    margin-top: 10px;
 }
 
 #standard_workout_style {
@@ -69,8 +71,8 @@
     height: 100px;
     border: 2px solid #FFFFFF;
     border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 #inner-div {
@@ -262,19 +264,6 @@
     align-items: center;
 }
 
-/* .see_note {
-    background-color: black;
-    border: 2px solid white;
-    color: white; 
-    width: 350px;
-    height: 50px;
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-family: "Bariol";
-    font-size: 25px;
-} */
-
 .see_note {
     display: flex;
     align-items: center;
@@ -289,11 +278,11 @@
     margin-bottom: 10px;
     font-family: "Bariol";
     font-size: 25px;
-    padding: 0 10px; /* Add padding for better spacing */
+    padding: 0 10px;
   }
   
   .button-text {
-    flex: 1; /* Allows the title to take up remaining space */
+    flex: 1;
     text-align: left; /* Aligns the text to the left */
   }
   

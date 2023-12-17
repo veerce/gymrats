@@ -27,8 +27,8 @@
 }
 
 .padding_top_bottom {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 #previous_workouts {
@@ -43,7 +43,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 50px;
     text-align: center;
 }
 
@@ -92,4 +92,5 @@
     color: white; 
     font-size: 30px;
     text-decoration: underline;
+    padding-top: 20px;
 }
