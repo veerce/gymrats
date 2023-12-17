@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import React, { useState }  from 'react';
 import "../style/workoutsummarystyles.css";
 import "../style/buttonstyles.css";
@@ -13,6 +13,7 @@ const WorkoutSummary = () => {
   // Use the location hook to access query parameters
   const { search } = useLocation();
   const params = new URLSearchParams(search);
+  const { workoutId } = useParams();
 
   // Get datetime and length from the query parameters
   const datetime = params.get('datetime');

@@ -13,22 +13,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 const WorkoutDetails = ({ username }) => {
   const { workoutId } = useParams();
   let display_machine = 'My Workout';
-  console.log('GOT THE WORKOUT ID', workoutId)
 
-  return (
-    <div className="workout_details">
-      <BasicHeader title={display_machine} />
-        <TimeElapsed />
-        <CurrentEquipment />
-        <CheckEquipment />
-        <EndButton />
-    </div>
-  );
-};
-
-const TimeElapsed = () => {
-  const [timeElapsed, setTimeElapsed] = useState(0);
-
+  const [timeElapsed, setTimeElapsed] = useState(0);  
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeElapsed(prevTime => prevTime + 1);
@@ -37,6 +23,18 @@ const TimeElapsed = () => {
     return () => clearInterval(interval); // Cleanup on component unmount
   }, []);
 
+  return (
+    <div className="workout_details">
+      <BasicHeader title={display_machine} />
+        <TimeElapsed timeElapsed={timeElapsed}/>
+        <CurrentEquipment />
+        <CheckEquipment />
+        <EndButton workoutId={workoutId} timeElapsed={timeElapsed}/>
+    </div>
+  );
+};
+
+const TimeElapsed = ({timeElapsed}) => {
   // Format the time in minutes and seconds
   const minutes = Math.floor(timeElapsed / 60);
   const seconds = timeElapsed % 60;
@@ -155,10 +153,41 @@ const CheckEquipment = ({CheckEquipment}) => {
   );
 }
 
-const EndButton = () => {
+const EndButton = ({workoutId, timeElapsed}) => {
   const navigate = useNavigate();
-  const handleEndWorkout = () => {
-    navigate('/home');
+
+  const handleEndWorkout = async () => {
+    console.log('Workout ended. Time elapsed: ' + (timeElapsed))
+    try {
+      const formattedTimeElapsed = formatTime(timeElapsed);
+      const data = {duration: formattedTimeElapsed};
+    
+    const response = await fetch(`http://127.0.0.1:5000/workouts/${workoutId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    console.log('Workout updated successfully.');
+    navigate(`/workout-summary/${workoutId}`);
+    }
+    catch (error) {
+      console.error('Error ending workout:', error);
+    }    
+  };
+
+  const formatTime = (totalSeconds) => {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+  
+    return [hours, minutes, seconds]
+      .map(val => val.toString().padStart(2, '0'))
+      .join(':');
   };
 
   return (

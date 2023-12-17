@@ -69,7 +69,7 @@ function App() {
         <Route path="/workout-details/:workoutId" element={<WorkoutDetails />} />
         <Route path="/gym-search" element={<GymSearch />} />
         <Route path="/equipmentcardio" element={<EquipmentCardio />} />
-        <Route path="/workout-summary" element={<WorkoutSummary />} />
+        <Route path="/workout-summary/:workoutId" element={<WorkoutSummary />} />
       </Routes>
     </div>
   );
