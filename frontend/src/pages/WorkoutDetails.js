@@ -57,7 +57,6 @@ const WorkoutDetails = ({ username }) => {
 };
 
 const TimeElapsed = ({timeElapsed}) => {
-  // Format the time in minutes and seconds
   const minutes = Math.floor(timeElapsed / 60);
   const seconds = timeElapsed % 60;
   const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
@@ -76,11 +75,11 @@ const TimeElapsed = ({timeElapsed}) => {
 
 
 const CurrentEquipment = () => {
-  const [selectedWorkout, setSelectedWorkout] = useState('treadmill');
+  const [selectedWorkout, setSelectedWorkout] = useState('smith machine');
   const handleWorkoutChange = (workout) => {
     setSelectedWorkout(workout);
   };
-  
+
   const getMachineName = () => {
     switch (selectedWorkout) {
       case 'treadmill':
@@ -96,6 +95,9 @@ const CurrentEquipment = () => {
 
   const [speed, setSpeed] = useState('');
   const [pace, setPace] = useState('');
+  const [sets, setSets] = useState('');
+  const [reps, setReps] = useState('');
+  const [weight, setWeight] = useState('');
 
   const handleSpeedChange = (event) => {
     const newSpeed = event.target.value;
@@ -130,22 +132,71 @@ const CurrentEquipment = () => {
             </CenteredContent>
           </div>
           <div className="square-container">
-              <div id="text_box_label">SPEED</div>
-              <div className="input-container">
-                <input
-                  type="text"
-                  placeholder="Enter Speed (MPH)"
-                  value={speed}
-                  onChange={handleSpeedChange}
-                />
+            {selectedWorkout === 'treadmill' && (
+              <>
+                <div id="text_box_label">SPEED</div>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    placeholder="ENTER"
+                    value={speed}
+                    onChange={handleSpeedChange}
+                  />
+                </div>
+                <div id="text_box_mins">PACE {pace ? `${pace} min/mile` : '---'}</div>
+              </>
+            )}
+            {selectedWorkout !== 'treadmill' && (
+             <>
+                <div className="input-set">
+                <div className="horizontal-container">
+                  <div id="text_box_label">SETS&nbsp;</div>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      placeholder="ENTER"
+                      value={sets}
+                      onChange={(e) => setSets(e.target.value)}
+                    />
+                  </div>
+                  </div>
+                </div>
+                <div className="input-set">
+                <div className="horizontal-container">
+                  <div id="text_box_label">REPS&nbsp;</div>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      placeholder="ENTER"
+                      value={reps}
+                      onChange={(e) => setReps(e.target.value)}
+                    />
+                  </div>
+                  </div>
+                </div>
+                <div className="input-set">
+                <div className="horizontal-container">
+                  <div id="text_box_label">WEIGHT</div>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      placeholder="ENTER"
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
-              <div id="text_box_mins">PACE {pace ? `${pace} min/mile` : '---'}</div>
-            </div>
+
+              </>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };
+
 
 const CenteredContent = ({ children }) => {
   return (
