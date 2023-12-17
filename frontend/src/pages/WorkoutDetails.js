@@ -75,7 +75,7 @@ const TimeElapsed = ({timeElapsed}) => {
 
 
 const CurrentEquipment = () => {
-  const [selectedWorkout, setSelectedWorkout] = useState('smith machine');
+  const [selectedWorkout, setSelectedWorkout] = useState('treadmill');
   const handleWorkoutChange = (workout) => {
     setSelectedWorkout(workout);
   };
@@ -95,6 +95,7 @@ const CurrentEquipment = () => {
 
   const [speed, setSpeed] = useState('');
   const [pace, setPace] = useState('');
+  const [incline, setIncline] = useState('');
   const [sets, setSets] = useState('');
   const [reps, setReps] = useState('');
   const [weight, setWeight] = useState('');
@@ -108,7 +109,16 @@ const CurrentEquipment = () => {
   };
 
   const calculatePace = (speed) => {
-    return speed ? (60 / parseFloat(speed)).toFixed(2) : '';
+    if (speed) {
+      const paceInMinutes = 60/parseFloat(speed);
+  
+      const minutes = Math.floor(paceInMinutes);
+      const seconds = Math.round((paceInMinutes % 1) * 60);
+  
+      return `   ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    } else {
+      return '';
+    }
   };
 
   return (
@@ -134,27 +144,40 @@ const CurrentEquipment = () => {
           <div className="square-container">
             {selectedWorkout === 'treadmill' && (
               <>
-                <div id="text_box_label">SPEED</div>
+              <div className="horizontal-container">
+                <div id="text_box_label">SPEED&nbsp;</div>
                 <div className="input-container">
                   <input
                     type="text"
-                    placeholder="ENTER"
+                    placeholder="MPH"
                     value={speed}
                     onChange={handleSpeedChange}
                   />
                 </div>
-                <div id="text_box_mins">PACE {pace ? `${pace} min/mile` : '---'}</div>
+                </div>
+                <div id="text_box_mins">PACE{pace ? `${pace}` : ''}</div>
+                <div className="horizontal-container">
+                <div id="text_box_label">INCLINE&nbsp;</div>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    placeholder="#"
+                    value={incline}
+                  />
+                </div>
+                </div>
               </>
+              
             )}
             {selectedWorkout !== 'treadmill' && (
              <>
                 <div className="input-set">
                 <div className="horizontal-container">
-                  <div id="text_box_label">SETS&nbsp;</div>
+                  <div id="text_box_label">SETS&nbsp;&nbsp;&nbsp;&nbsp;</div>
                   <div className="input-container">
                     <input
                       type="text"
-                      placeholder="ENTER"
+                      placeholder="#"
                       value={sets}
                       onChange={(e) => setSets(e.target.value)}
                     />
@@ -163,11 +186,11 @@ const CurrentEquipment = () => {
                 </div>
                 <div className="input-set">
                 <div className="horizontal-container">
-                  <div id="text_box_label">REPS&nbsp;</div>
+                  <div id="text_box_label">REPS&nbsp;&nbsp;&nbsp;&nbsp;</div>
                   <div className="input-container">
                     <input
                       type="text"
-                      placeholder="ENTER"
+                      placeholder="#"
                       value={reps}
                       onChange={(e) => setReps(e.target.value)}
                     />
@@ -180,7 +203,7 @@ const CurrentEquipment = () => {
                   <div className="input-container">
                     <input
                       type="text"
-                      placeholder="ENTER"
+                      placeholder="lbs/kg"
                       value={weight}
                       onChange={(e) => setWeight(e.target.value)}
                     />
