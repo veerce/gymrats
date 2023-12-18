@@ -133,7 +133,7 @@ def get_gym_occupancy(gym_id):
 		return jsonify({"error: str(e)"}), 500
 
 # Route to add a new exercise to the exercise table
-@app.route('/exercise/<int:workout_id>', methods=['POST'])
+@app.route('/exercise/<int:workout_id>', methods=['PUT'])
 def add_exercise(workout_id):
 	data = request.json
 
@@ -142,12 +142,13 @@ def add_exercise(workout_id):
 	sets = data.get('sets')
 	reps = data.get('reps')
 	weight = data.get('weight')
-	duration = data.get('duration')
-	intensity = data.get('intensity')
+	speed = data.get('speed')
+	pace = data.get('pace')
+	incline = data.get('incline')
 	
 	try:
 		db = get_db()
-		exercise_id = db.add_exercise(workout_id, equipment_id, exercise_name, sets, reps, weight, duration, intensity)
+		exercise_id = db.add_exercise(workout_id, equipment_id, exercise_name, sets, reps, weight, speed, pace, incline)
 		return jsonify({"message": "Exercise added successfully", "exercise_id": exercise_id}), 201
 	except Exception as e:
 		return jsonify({"error": str(e)}), 500

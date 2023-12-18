@@ -60,7 +60,7 @@ class Database:
 
     def get_workout_exercises(self, workout_id):
         query = """
-            SELECT e.exercise_id, e.exercise_name, e.sets, e.reps, e.weight, e.duration_minutes, e.intensity
+            SELECT e.exercise_id, e.exercise_name, e.sets, e.reps, e.weight, e.speed, e.pace, e.incline
             FROM Exercises e
             WHERE e.workout_id = ?
             """
@@ -96,13 +96,12 @@ class Database:
 
         return occupancy_rate
     
-    def add_exercise(self, workout_id, equipment_id, exercise_name, sets=None, reps=None, weight=None, duration=None, intensity=None):
+    def add_exercise(self, workout_id, equipment_id, exercise_name, sets=None, reps=None, weight=None, speed=None, pace=None, incline=None):
         query = """
-            INSERT INTO Exercises (workout_id, equipment_id, exercise_name, sets, reps, weight, duration_minutes, intensity)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO Exercises (workout_id, equipment_id, exercise_name, sets, reps, weight, speed, pace, incline)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)
         """ 
-                    
-        self.cursor.execute(query, (workout_id, equipment_id, exercise_name, sets, reps, weight, duration, intensity))
+        self.cursor.execute(query, (workout_id, equipment_id, exercise_name, sets, reps, weight, speed, pace, incline))
         self.conn.commit()
         return self.cursor.lastrowid
 

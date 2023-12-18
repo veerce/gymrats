@@ -84,6 +84,7 @@ const RightContent = ({ children }) => {
 const ExerciseLabel = (exercise_details) => {
 
     var selectedWorkout = Object.values(exercise_details)[0][1];
+    selectedWorkout = selectedWorkout.charAt(0).toUpperCase() + selectedWorkout.slice(1)
     var workoutDetails = Object.values(exercise_details)[0];
 
     return (
@@ -94,10 +95,10 @@ const ExerciseLabel = (exercise_details) => {
             <div className="square-container">
                 <LeftContent>
                     <div id="equipment_icon" className="icon-container">
-                    {selectedWorkout === 'Run' && (
+                    {selectedWorkout === 'Run' || selectedWorkout === 'Treadmill' && (
                         <img className="icon-image" src={TreadmillIcon} alt="Treadmill Icon" />
                     )}
-                    {selectedWorkout === 'Squats' && (
+                    {selectedWorkout === 'Smith Machine' && (
                         <img className="icon-image" src={SmithMachineIcon} alt="Smith Machine Icon" />
                     )}
                     {selectedWorkout === 'Bench Press' && (
@@ -111,10 +112,11 @@ const ExerciseLabel = (exercise_details) => {
             </div>
             <div className="square-container">
                 <RightContent>
-                    {selectedWorkout === 'Run' ? (
+                    {selectedWorkout === 'Run' || selectedWorkout === 'Treadmill'? (
                         <>
-                            <div id="text_box_label">Duration: {workoutDetails[5]}</div>
-                            <div id="text_box_label">Intensity: {workoutDetails[6]}</div>
+                            <div id="text_box_label">Speed: {workoutDetails[5]}</div>
+                            <div id="text_box_label">Pace: {workoutDetails[6]}</div>
+                            <div id="text_box_label">Incline: {workoutDetails[7]}</div>
                         </>
                     ) : (
                         <>
