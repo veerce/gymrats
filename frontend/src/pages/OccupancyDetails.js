@@ -70,7 +70,10 @@ const OccupancyDetails = () => {
           },
         ],
       };
-    const handleEquipmentClick = () => {
+    
+    
+    
+      const handleEquipmentClick = () => {
         console.log(`Equipment clicked`);
         navigate('/equipmentall');
     };
@@ -80,7 +83,7 @@ const OccupancyDetails = () => {
     return (
         <div className="container">
           <BasicHeader title="Dodge Fitness Center" subheader="OPEN 6AM - 12AM"/>  
-          <CurrentOccupancy occ="70" /> 
+          <CurrentOccupancy occ="52" /> 
           <ViewEquipmentDetails text="View Occupancy by Equipment" onClick={handleEquipmentClick}/>
           <div>
             <DailyCapacityTrends chartData={data} />

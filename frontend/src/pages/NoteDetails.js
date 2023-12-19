@@ -2,13 +2,15 @@ import React from 'react';
 import '../style/notesstyles.css';
 import BasicHeader from '../components/BasicHeader';
 import {NotesButton, AddButton} from '../components/Buttons';
-import { useParams } from 'react-router-dom'; 
+import { useParams, useNavigate } from 'react-router-dom'; 
 
 
 const NoteDetails = () => {
   const {note_id} = useParams();
   let content;
   let title;
+  const navigate = useNavigate();
+
   
   // create a case swtich here that will fill in different content
   switch (parseInt(note_id)) {
@@ -33,9 +35,18 @@ const NoteDetails = () => {
 return (
   <div className="container">
       <BasicHeader title={title || "Notes"}/>
-      <div className='note_content'>
-        {content}
+      <div className='content'>
+        <div className='back_div'>
+          <div className='back_div'>
+            <div onClick={() => navigate(-1)} className="back-button">Back</div>
+          </div>
+        </div>
+        <div className='note_content'>{content}</div>
       </div>
+      {/* <div className='back_div'>
+        <div onClick={() => navigate(-1)} className="back-button">Back</div>
+      </div>
+      <div className='note_content'>{content}</div> */}
   </div>
 
   )
