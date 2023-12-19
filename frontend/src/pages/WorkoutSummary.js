@@ -80,8 +80,8 @@ const RightContent = ({ children }) => {
       </div>
     );
   };
-    
-const ExerciseLabel = (exercise_details) => {
+
+  const ExerciseLabel = (exercise_details) => {
 
     var selectedWorkout = Object.values(exercise_details)[0][1];
     selectedWorkout = selectedWorkout.charAt(0).toUpperCase() + selectedWorkout.slice(1)

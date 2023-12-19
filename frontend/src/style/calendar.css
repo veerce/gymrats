@@ -48,7 +48,7 @@ abbr[title] {
   overflow: hidden;
 }
 
-/* Hover Styles */
+/* Hover Styles 
 .react-calendar__tile:enabled:hover::after,
 .react-calendar__tile--active::after {
   content: "";
@@ -60,8 +60,10 @@ abbr[title] {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: rgba(125, 26, 124, 0.9);
+  background: rgba(190, 173, 249, 0.9);
 }
+
+*/
 
 /* Remove existing background and color properties for these states */
 .react-calendar__tile:enabled:hover,
@@ -71,12 +73,10 @@ abbr[title] {
 }
 
 /* Select Range */
-.react-calendar--selectRange .react-calendar__tile--hover {
-  background-color: #f8f8fa;
-}
 
-/* Selected Day Styles */
-.workout-day::after {
+
+/* Selected Day Styles 
+.workout-day {
   content: "";
   display: block;
   position: absolute;
@@ -86,12 +86,29 @@ abbr[title] {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: blue;
+  background: rgba(190, 173, 249, 0.5);
   color: white;
+}
+*/
+.workout-day {
+  background-color: rgb(190, 173, 249); /* Change this to the desired highlight color */
+  color: #000000; /* Change this to the desired text color */
+  border-radius: 50%;
 }
 
 /* Exclude styling for the current date */
 .current-date {
   background: none;
   color: white;
+}
+
+/* Add the following styles to override the background color change on hover */
+.react-calendar__navigation__label:hover {
+  background-color: transparent !important;
+}
+
+/* If the arrows also have a background color on hover, you can add the following styles */
+.react-calendar__navigation__prev2-button:hover,
+.react-calendar__navigation__next2-button:hover {
+  background-color: transparent !important;
 }

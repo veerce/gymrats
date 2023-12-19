@@ -10,11 +10,10 @@ import SearchBar from '../components/SearchBar';
 import WorkoutDetails from './WorkoutDetails.js';
 import { WorkoutLink } from '../components/Buttons.js';
 
-const Profile = ({ username }) => {
-  let display_title = 'Previous Workouts';
+const Profile = ({ userId }) => {
   return (
     <div className="container g-0">
-      <BasicHeader title={display_title}/>
+      <BasicHeader title={'Previous Workouts'}/>
       <SearchBar/>
       <Routes>
         <Route path="/" element={<CalendarObj />} />
@@ -32,16 +31,6 @@ const CalendarObj = () => {
     'Fri Nov 24 2023',
     'Sun Nov 26 2023',
   ]);
-
-  const handleDateClick = (clickedDate) => {
-    const dateString = clickedDate.toDateString();
-
-    if (workoutDays.includes(dateString)) {
-      window.location.href = `/workout-details/${dateString}`;
-    } else {
-      setWorkoutDays([...workoutDays, dateString]);
-    }
-  };
 
   const isWorkoutDay = (day) => workoutDays.includes(day.toDateString());
 
@@ -61,7 +50,6 @@ const CalendarObj = () => {
         <Calendar
           onChange={setDate}
           value={date}
-          onClickDay={(value) => handleDateClick(value)}
           tileClassName={tileClassName}
         />
       </div>

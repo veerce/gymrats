@@ -191,7 +191,6 @@ const CurrentEquipment = ({
           </div>
           <div className="square-container">
           <div className="horizontal-container">
-              <div id="text_box_label">Select Workout&nbsp;</div>
               <div className="input-container">
                 <select
                   value={selectedWorkout}
