@@ -192,6 +192,7 @@ const CurrentEquipment = ({
           <div className="square-container">
           <div className="horizontal-container">
               <div className="input-container">
+                <div className="dropdown">
                 <select
                   value={selectedWorkout}
                   onChange={(e) => handleWorkoutChange(e.target.value)}
@@ -200,6 +201,7 @@ const CurrentEquipment = ({
                   <option value="Smith Machine">Smith Machine</option>
                   <option value="Leg Press">Leg Press</option>
                 </select>
+                </div>
               </div>
             </div>
             {selectedWorkout === 'Treadmill' && (
