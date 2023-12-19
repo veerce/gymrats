@@ -14,6 +14,17 @@ body {
     z-index: 1000;
 }
 
+#thicker-header{
+    width: 100%;
+    height: 100px; /* Fixed height for the header */
+    position: sticky;
+    top: 0;
+    background-color: #131738;
+    color: white;
+    text-align: center;
+    z-index: 1000;
+}
+
 .overlay-text,
 .subheader-text {
     font-family: "Bariol";
@@ -26,10 +37,15 @@ body {
     line-height: 1;
 }
 
+.extra-padding-at-top{
+    margin-top: 20px;
+}
+
 .subheader-text {
-    font-size: 20px;
-    color: #BCFF31;
-    margin-top: 10px;
+    font-size: 30px;
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 30px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;

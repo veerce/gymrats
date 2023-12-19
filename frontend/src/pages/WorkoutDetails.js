@@ -18,6 +18,26 @@ const WorkoutDetails = ({ username }) => {
   const [totalElapsedTime, setTotalElapsedTime] = useState(0);
   const [isNewSession, setIsNewSession] = useState(true);
 
+  const [selectedWorkout, setSelectedWorkout] = useState('Treadmill');
+  const [speed, setSpeed] = useState(null);
+  const [pace, setPace] = useState(null);
+  const [incline, setIncline] = useState(null);
+  const [sets, setSets] = useState(null);
+  const [reps, setReps] = useState(null);
+  const [weight, setWeight] = useState(null);
+
+  const handleSpeedChange = (event) => {
+    const newSpeed = event.target.value;
+    setSpeed(newSpeed);
+    const newPace = calculatePace(newSpeed);
+    setPace(newPace);
+  };
+
+  const handleInclineChange = (event) => {
+    const newIncline = event.target.value;
+    setIncline(newIncline);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (isNewSession) {
@@ -44,9 +64,37 @@ const WorkoutDetails = ({ username }) => {
     <div className="workout_details">
       <BasicHeader title={display_machine} />
         <TimeElapsed timeElapsed={timeElapsed}/>
-        <CurrentEquipment />
+        <CurrentEquipment
+          selectedWorkout={selectedWorkout}
+          speed={speed}
+          pace={pace}
+          incline={incline}
+          sets={sets}
+          reps={reps}
+          weight={weight}
+          onSpeedChange={handleSpeedChange}
+          onInclineChange={handleInclineChange}
+          setSelectedWorkout={setSelectedWorkout}
+          setSpeed={setSpeed}
+          setIncline={setIncline}
+          setSets={setSets}
+          setReps={setReps}
+          setWeight={setWeight}
+          // Add other props as needed
+        />
         {isNewSession ? (
-        <EndEquipment onEnd={handleEndEquipment} />
+          <EndEquipment
+            onEnd={handleEndEquipment}
+            workoutId={workoutId}
+            selectedWorkout={selectedWorkout}
+            speed={speed}
+            pace={pace}
+            incline={incline}
+            sets={sets}
+            reps={reps}
+            weight={weight}
+            // Pass other relevant props
+          />
       ) : (
         <StartNewEquipment onStart={handleStartNewEquipment} />
       )}
@@ -73,51 +121,51 @@ const TimeElapsed = ({timeElapsed}) => {
   );
 };
 
+const calculatePace = (speed) => {
+  if (speed) {
+    const paceInMinutes = 60/parseFloat(speed);
 
-const CurrentEquipment = () => {
-  const [selectedWorkout, setSelectedWorkout] = useState('leg press');
+    const minutes = Math.floor(paceInMinutes);
+    const seconds = Math.round((paceInMinutes % 1) * 60);
+
+    return `   ${minutes}:${seconds.toString().padStart(2, '0')}`;
+  } else {
+    return '';
+  }
+};
+
+const CurrentEquipment = ({
+  selectedWorkout,
+  speed,
+  pace,
+  incline,
+  sets,
+  reps,
+  weight,
+  onSpeedChange,
+  onInclineChange,
+  setSelectedWorkout,
+  setSpeed,
+  setIncline,
+  setSets,
+  setReps,
+  setWeight
+    // Add other props as needed
+  }) => {
   const handleWorkoutChange = (workout) => {
     setSelectedWorkout(workout);
   };
 
   const getMachineName = () => {
     switch (selectedWorkout) {
-      case 'treadmill':
+      case 'Treadmill':
         return 'Treadmill';
-      case 'smith machine':
+      case 'Smith Machine':
         return 'Smith Machine';
-      case 'leg press':
+      case 'Leg Press':
         return 'Leg Press';
       default:
         return '';
-    }
-  };
-
-  const [speed, setSpeed] = useState('');
-  const [pace, setPace] = useState('');
-  const [incline, setIncline] = useState('');
-  const [sets, setSets] = useState('');
-  const [reps, setReps] = useState('');
-  const [weight, setWeight] = useState('');
-
-  const handleSpeedChange = (event) => {
-    const newSpeed = event.target.value;
-    setSpeed(newSpeed);
-
-    const newPace = calculatePace(newSpeed);
-    setPace(newPace);
-  };
-
-  const calculatePace = (speed) => {
-    if (speed) {
-      const paceInMinutes = 60/parseFloat(speed);
-  
-      const minutes = Math.floor(paceInMinutes);
-      const seconds = Math.round((paceInMinutes % 1) * 60);
-  
-      return `   ${minutes}:${seconds.toString().padStart(2, '0')}`;
-    } else {
-      return '';
     }
   };
 
@@ -128,13 +176,13 @@ const CurrentEquipment = () => {
           <div className="square-container">
             <CenteredContent>
               <div id="equipment_icon" className="icon-container">
-                {selectedWorkout === 'treadmill' && (
+                {selectedWorkout === 'Treadmill' && (
                   <img className="icon-image" src={TreadmillIcon} alt="Treadmill Icon" />
                 )}
-                {selectedWorkout === 'smith machine' && (
+                {selectedWorkout === 'Smith Machine' && (
                   <img className="icon-image" src={SmithMachineIcon} alt="Smith Machine Icon" />
                 )}
-                {selectedWorkout === 'leg press' && (
+                {selectedWorkout === 'Leg Press' && (
                   <img className="icon-image" src={LegPressIcon} alt="Leg Press Icon" />
                 )}
               </div>
@@ -142,34 +190,53 @@ const CurrentEquipment = () => {
             </CenteredContent>
           </div>
           <div className="square-container">
-            {selectedWorkout === 'treadmill' && (
+          <div className="horizontal-container">
+              <div id="text_box_label">Select Workout&nbsp;</div>
+              <div className="input-container">
+                <select
+                  value={selectedWorkout}
+                  onChange={(e) => handleWorkoutChange(e.target.value)}
+                >
+                  <option value="Treadmill">Treadmill</option>
+                  <option value="Smith Machine">Smith Machine</option>
+                  <option value="Leg Press">Leg Press</option>
+                </select>
+              </div>
+            </div>
+            {selectedWorkout === 'Treadmill' && (
               <>
-              <div className="horizontal-container">
-                <div id="text_box_label">SPEED&nbsp;</div>
-                <div className="input-container">
-                  <input
-                    type="text"
-                    placeholder="MPH"
-                    value={speed}
-                    onChange={handleSpeedChange}
-                  />
-                </div>
+                <div className="horizontal-container">
+                  <div id="text_box_label">SPEED&nbsp;</div>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      placeholder="MPH"
+                      value={speed}
+                      onChange={(e) => {
+                        onSpeedChange(e); 
+                        setSpeed(e.target.value); 
+                      }}
+                    />
+                  </div>
                 </div>
                 <div id="text_box_mins">PACE{pace ? `${pace}` : ''}</div>
                 <div className="horizontal-container">
-                <div id="text_box_label">INCLINE&nbsp;</div>
-                <div className="input-container">
-                  <input
-                    type="text"
-                    placeholder="#"
-                    value={incline}
-                  />
-                </div>
+                  <div id="text_box_label">INCLINE&nbsp;</div>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      placeholder="#"
+                      value={incline}
+                      onChange={(e) => {
+                        onInclineChange(e); 
+                        setIncline(e.target.value); 
+                      }}
+                    />
+                  </div>
                 </div>
               </>
-              
             )}
-            {selectedWorkout !== 'treadmill' && (
+            {selectedWorkout !== 'Treadmill' && (
              <>
                 <div className="input-set">
                 <div className="horizontal-container">
@@ -229,11 +296,43 @@ const CenteredContent = ({ children }) => {
   );
 };
 
-const EndEquipment = ({ onEnd }) => {
+const EndEquipment = ({ onEnd, workoutId, selectedWorkout, speed, pace, incline, sets, reps, weight}) => {
+  var equipment_id;
+  switch (selectedWorkout) {
+    case 'Run':
+      equipment_id = 1;
+    case 'Smith Machine':
+      equipment_id = 2;
+    case 'Bench Press':
+      equipment_id = 3;
+    default:
+      equipment_id = 4;
+  }
 
-  const handleEndClick = () => {
-    console.log(`End equipment clicked`);
-    onEnd();
+  var data = {'equipment_id':equipment_id, 
+          'exercise_name': selectedWorkout, 
+          'sets': sets, 'reps': reps, 
+          'weight': weight, 'speed': speed, 
+          'pace': pace, 'incline':incline}
+
+  const handleEndClick = async () => {
+    console.log('Equipment ended. Time elapsed: ' + data['duration'])
+    try {    
+    const response = await fetch(`http://127.0.0.1:5000/exercise/${workoutId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    console.log('Exercise updated successfully.');
+    }
+    catch (error) {
+      console.error('Error ending exercise:', error);
+    }    
   };
 
   return (
@@ -308,7 +407,7 @@ const EndButton = ({workoutId, timeElapsed}) => {
       console.error('Error ending workout:', error);
     }    
   };
-
+ 
   const formatTime = (totalSeconds) => {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);

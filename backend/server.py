@@ -51,6 +51,31 @@ def get_user_workouts(user_id, limit):
 			return jsonify({"message": "No workouts found"}), 404
 	except Exception as e:
 		return jsonify({"error": str(e)}), 500
+	
+@app.route('/workout_date_time/<int:workout_id>', methods=['GET'])
+def get_workout_date_time(workout_id):
+	try:
+		db = get_db()
+		data = db.get_workout_date_time(workout_id)
+		if data:
+			return jsonify(data)
+		else: 
+			return jsonify({"message": "No workout data found"}), 404
+	except Exception as e:
+		return jsonify({"error": str(e)}), 500
+	
+@app.route('/workout_exercises/<int:workout_id>', methods=['GET'])
+def get_exercises_for_workout(workout_id):
+	# this route will get all of 1 specific user's previous workouts, with an optional limit
+	try:
+		db = get_db()
+		data = db.get_workout_exercises(workout_id)
+		if data:
+			return jsonify(data)
+		else: 
+			return jsonify({"message": "No exercises found for workout"}), 404
+	except Exception as e:
+		return jsonify({"error": str(e)}), 500
 
 # Route to create new workout in DB and to get a new workout_id
 @app.route('/workouts/<int:user_id>', methods=['POST'])
@@ -108,7 +133,7 @@ def get_gym_occupancy(gym_id):
 		return jsonify({"error: str(e)"}), 500
 
 # Route to add a new exercise to the exercise table
-@app.route('/exercise/<int:workout_id>', methods=['POST'])
+@app.route('/exercise/<int:workout_id>', methods=['PUT'])
 def add_exercise(workout_id):
 	data = request.json
 
@@ -117,12 +142,13 @@ def add_exercise(workout_id):
 	sets = data.get('sets')
 	reps = data.get('reps')
 	weight = data.get('weight')
-	duration = data.get('duration')
-	intensity = data.get('intensity')
+	speed = data.get('speed')
+	pace = data.get('pace')
+	incline = data.get('incline')
 	
 	try:
 		db = get_db()
-		exercise_id = db.add_exercise(workout_id, equipment_id, exercise_name, sets, reps, weight, duration, intensity)
+		exercise_id = db.add_exercise(workout_id, equipment_id, exercise_name, sets, reps, weight, speed, pace, incline)
 		return jsonify({"message": "Exercise added successfully", "exercise_id": exercise_id}), 201
 	except Exception as e:
 		return jsonify({"error": str(e)}), 500
