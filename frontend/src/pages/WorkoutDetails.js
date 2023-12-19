@@ -75,7 +75,7 @@ const TimeElapsed = ({timeElapsed}) => {
 
 
 const CurrentEquipment = () => {
-  const [selectedWorkout, setSelectedWorkout] = useState('treadmill');
+  const [selectedWorkout, setSelectedWorkout] = useState('leg press');
   const handleWorkoutChange = (workout) => {
     setSelectedWorkout(workout);
   };
