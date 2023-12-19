@@ -1,5 +1,3 @@
-/* Add this to your calendar.css file */
-
 /* Calendar Container */
 .react-calendar {
   width: 350px;
@@ -42,73 +40,25 @@ abbr[title] {
   color: white;
 }
 
-/* Tiles */
-.react-calendar__tile:enabled {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Hover Styles 
-.react-calendar__tile:enabled:hover::after,
-.react-calendar__tile--active::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(190, 173, 249, 0.9);
-}
-
-*/
-
-/* Remove existing background and color properties for these states */
-.react-calendar__tile:enabled:hover,
-.react-calendar__tile:enabled:focus,
-.react-calendar__tile--active {
-  background: none;
-}
-
-/* Select Range */
-
-
-/* Selected Day Styles 
 .workout-day {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(190, 173, 249, 0.5);
-  color: white;
-}
-*/
-.workout-day {
-  background-color: rgb(190, 173, 249); /* Change this to the desired highlight color */
-  color: #000000; /* Change this to the desired text color */
+  background-color: rgb(190, 173, 249); 
+  color: #000000; 
   border-radius: 50%;
 }
 
-/* Exclude styling for the current date */
-.current-date {
-  background: none;
-  color: white;
+.react-calendar__navigation__prev2-button:active,
+.react-calendar__navigation__next2-button:active,
+.react-calendar__navigation__prev-button:active,
+.react-calendar__navigation__next-button:active,
+.react-calendar__navigation__prev2-button:focus,
+.react-calendar__navigation__next2-button:focus,
+.react-calendar__navigation__prev-button:focus,
+.react-calendar__navigation__next-button:focus {
+  background-color: inherit !important;
 }
 
-/* Add the following styles to override the background color change on hover */
-.react-calendar__navigation__label:hover {
-  background-color: transparent !important;
-}
-
-/* If the arrows also have a background color on hover, you can add the following styles */
-.react-calendar__navigation__prev2-button:hover,
-.react-calendar__navigation__next2-button:hover {
-  background-color: transparent !important;
+.react-calendar__tile--now:active,
+.react-calendar__tile--now:focus,
+.react-calendar__tile--now:active:focus {
+  background-color: inherit !important;
 }

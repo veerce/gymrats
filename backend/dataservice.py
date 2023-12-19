@@ -68,6 +68,13 @@ class Database:
         exercise_info = self.cursor.fetchall()
         return exercise_info
     
+    def get_workouts_by_date(self, workout_date):
+        query = "SELECT * FROM Workouts WHERE date = ?"
+
+        self.cursor.execute(query, (workout_date,))
+        exercise_info = self.cursor.fetchall()
+        return exercise_info
+    
     def get_gym_data(self, gym_id):
         self.cursor.execute("SELECT * FROM Gyms WHERE gym_id = ?", (gym_id,))
         gym_data = self.cursor.fetchall()
@@ -131,6 +138,13 @@ class Database:
         except Exception as e:
             print(f"An error occurred: {e}")
             return False
+        
+    def get_unique_workout_dates(self):
+        query = "SELECT DISTINCT date FROM Workouts"
+
+        self.cursor.execute(query)
+        exercise_info = self.cursor.fetchall()
+        return exercise_info
 
 def pretty_print(data):
     if not data:

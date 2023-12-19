@@ -13,12 +13,11 @@ import LeftHeader from '../components/LeftHeader';
 
 
 const WorkoutSummary = () => {
-  // Use the location hook to access query parameters
   const currentUrl = window.location.href;
   const workout_id = currentUrl.split('/').pop();
 
   const [workoutData, setWorkoutData] = useState({
-    workoutid: workout_id,
+    workoutid: 57,
     date: "",
     time: "",
   });
@@ -29,13 +28,13 @@ const WorkoutSummary = () => {
         try {
           console.log("fetching workout data...")
           const workoutResponse = await fetch(`http://127.0.0.1:5000/workout_date_time/${workout_id}`);
-          const workoutData = await workoutResponse.json();
+          const data = await workoutResponse.json();
           setWorkoutData((prevData) => ({
             ...prevData,
-            date: workoutData.date,
-            time: workoutData.time
+            date: data.date,
+            time: data.time
           }));
-          console.log("fetching workout exercises...")
+          console.log("fetching workout exercises...", workoutData.date)
           const exercisesResponse = await fetch(`http://127.0.0.1:5000/workout_exercises/${workout_id}`);
           const exercisesData = await exercisesResponse.json();
           if (exercisesData && exercisesData.length > 0) {
@@ -95,13 +94,22 @@ const RightContent = ({ children }) => {
             <div className="square-container">
                 <LeftContent>
                     <div id="equipment_icon" className="icon-container">
-                    {selectedWorkout === 'Run' || selectedWorkout === 'Treadmill' && (
+                    {selectedWorkout === 'Treadmill' && (
+                        <img className="icon-image" src={TreadmillIcon} alt="Treadmill Icon" />
+                    )}
+                    {selectedWorkout === 'Run' && (
                         <img className="icon-image" src={TreadmillIcon} alt="Treadmill Icon" />
                     )}
                     {selectedWorkout === 'Smith Machine' && (
                         <img className="icon-image" src={SmithMachineIcon} alt="Smith Machine Icon" />
                     )}
+                    {selectedWorkout === 'Squats' && (
+                        <img className="icon-image" src={SmithMachineIcon} alt="Smith Machine Icon" />
+                    )}
                     {selectedWorkout === 'Bench Press' && (
+                        <img className="icon-image" src={BenchImage} alt="Bench Press Icon" />
+                    )}
+                    {selectedWorkout === 'Deadlifts' && (
                         <img className="icon-image" src={BenchImage} alt="Bench Press Icon" />
                     )}
                     {selectedWorkout === 'Leg Press' && (

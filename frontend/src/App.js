@@ -62,7 +62,7 @@ function App() {
         <Route path="/" element={<Home user={userData}/>} />
         <Route path="/home" element={<Home user={userData}/>} />
         <Route path="/occupancy" element={<Occupancy user={userData}/>} />
-        <Route path="/occupancydetails" element={<OccupancyDetails />}/>
+        <Route path="/occupancydetails" element={<OccupancyDetails user={userData} />}/>
         <Route path="/equipmentall" element={<EquipmentAll />}/>
         <Route path="/startworkout" element={<StartWorkout />} />
         <Route path="/notes" element={<Notes />} />

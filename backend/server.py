@@ -152,6 +152,29 @@ def add_exercise(workout_id):
 		return jsonify({"message": "Exercise added successfully", "exercise_id": exercise_id}), 201
 	except Exception as e:
 		return jsonify({"error": str(e)}), 500
+	
+# Route to get all unique workout dates
+@app.route('/unique_workout_dates', methods=['GET'])
+def get_unique_workout_dates():
+    try:
+        db = get_db()
+        unique_dates = db.get_unique_workout_dates()
+        return jsonify(unique_dates)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Route to get workouts for a specific date
+@app.route('/workouts/date/<string:workout_date>', methods=['GET'])
+def get_workouts_by_date(workout_date):
+    try:
+        db = get_db()
+        data = db.get_workouts_by_date(workout_date)
+        if data:
+            return jsonify(data)
+        else:
+            return jsonify({"message": "No workouts found for the specified date"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # Running app
 if __name__ == '__main__':

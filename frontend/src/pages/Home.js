@@ -113,6 +113,7 @@ const GetStarted = () => {
 
 const RecentWorkouts = ({ userId }) => {
   const [workouts, setWorkouts] = useState([]);
+  console.log(workouts);
 
   useEffect(() => {
     const fetchUserWorkouts = async () => {

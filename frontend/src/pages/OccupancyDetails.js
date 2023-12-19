@@ -3,7 +3,7 @@ import '../style/occupancystyles.css';
 import BasicHeader from '../components/BasicHeader';
 import {OccupancyQuickView, AddGym, ViewEquipmentDetails} from '../components/Buttons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
 import { useLocation } from 'react-router-dom';
 // import {CurrentOccupancy} from '../components/Buttons';
@@ -15,8 +15,44 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { CircularProgressbar, buildStyles} from 'react-circular-progressbar';
 import EquipmentAll from './EquipmentAll';
 
-const OccupancyDetails = () => {
+const OccupancyDetails = ({user}) => {
     const navigate = useNavigate();
+
+  const gym_id = user.savedGyms;
+  console.log(user);
+  const [favGymData, setGymData] = useState({
+    gymId: gym_id,
+    gymName: "",
+    gymOccupancy: 70,
+  });
+
+  useEffect(() => {
+    const fetchGymDetails = async () => {
+      try {
+        console.log("fetching occupancy data...")
+        const occupancyResponse = await fetch(`http://127.0.0.1:5000/gyms/${gym_id}/occupancy`);
+        const occupancyData = await occupancyResponse.json();
+        setGymData((prevData) => ({
+          ...prevData,
+          gymOccupancy: Math.ceil(occupancyData),
+        }));
+        console.log("fetching gym data...")
+        const gymResponse = await fetch(`http://127.0.0.1:5000/gyms/${gym_id}`);
+        const data = await gymResponse.json();
+        console.log("setting data", data[0][1]);
+        setGymData((prevData) => ({
+          ...prevData,
+          gymName: data[0][1],
+        }));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    if (gym_id !== undefined) {
+      fetchGymDetails();
+    }
+  }, [gym_id]);
 
     const data = {
         labels: ['6a', ' ', ' ', '9a', ' ', ' ', '12p', ' ', ' ', '3p', ' ', ' ', '6p',' ',' ', '9p',' ',' ', '12a'],
@@ -80,7 +116,7 @@ const OccupancyDetails = () => {
     return (
         <div className="container">
           <BasicHeader title="Dodge Fitness Center" subheader="OPEN 6AM - 12AM"/>  
-          <CurrentOccupancy occ="70" /> 
+          <CurrentOccupancy occ={favGymData.gymOccupancy} /> 
           <ViewEquipmentDetails text="View Occupancy by Equipment" onClick={handleEquipmentClick}/>
           <div>
             <DailyCapacityTrends chartData={data} />
