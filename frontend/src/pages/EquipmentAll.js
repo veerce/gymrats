@@ -5,7 +5,7 @@ import '../style/equipmentstyles.css';
 import TreadmillImage from '../images/solar_treadmill-round-bold.png';
 import LegpressImage from '../images/leg-press-image.png';
 import BenchImage from '../images/bench-image.png';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const EquipmentCard = ({ name, status, timeStarted, avgTime, imageUrl }) => (
     <div className="card">
@@ -43,6 +43,8 @@ const EquipmentSection = ({ title, equipments, link }) => (
 );
 
 const EquipmentAll = () => {
+    const navigate = useNavigate();
+
     const cardioEquipment = [
         { name: 'Treadmill 1', status: true, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: TreadmillImage },
         { name: 'Treadmill 2', status: false, timeStarted: '34 mins', avgTime: '30 mins', imageUrl: TreadmillImage},
@@ -60,12 +62,15 @@ const EquipmentAll = () => {
         { name: 'Bench 2', status: false, timeStarted: '5 mins', avgTime: '10 mins', imageUrl: BenchImage },
         { name: 'Bench 3', status: false, timeStarted: '2 mins', avgTime: '10 mins', imageUrl: BenchImage },
     ];
+    
     return (
         <div className="container">
             <BasicHeader title="Equipments" />
             <div className="equipment-all-search-bar">
+                <div onClick={() => navigate(-1)} className="back-button">Back</div>
                 <SearchBar placeholder_text= "Find a machine, category, etc."/> 
             </div> 
+
             <EquipmentSection title="Cardio" equipments={cardioEquipment} link='/equipmentcardio' />
             <EquipmentSection title="Weight Machines" equipments={weightMachines} />
             <EquipmentSection title="Free Weights" equipments={freeWeights} /> 

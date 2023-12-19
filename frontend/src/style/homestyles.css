@@ -66,6 +66,11 @@
     text-decoration: underline;
 }
 
+#view_details.clicked {
+    color: white;
+}
+
+
 .left_aligned_text {
     display: flex;
     align-items: center;

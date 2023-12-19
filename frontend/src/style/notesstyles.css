@@ -12,6 +12,7 @@
   
   .content {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,4 +34,16 @@
     margin-top: 20px; /* Adjust as needed for spacing */
   }
   
-  
+  .back-button {
+    color: #BCFF31;
+    text-decoration: underline;
+    text-align: left; /* Align text to the left */
+    display: inline-block; /* Make the div only as wide as its content */
+}
+
+.back_div {
+  width: 100%;
+  height: 3%;
+  padding-left: 15px;
+}
+

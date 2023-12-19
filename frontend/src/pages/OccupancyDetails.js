@@ -106,7 +106,10 @@ const OccupancyDetails = ({user}) => {
           },
         ],
       };
-    const handleEquipmentClick = () => {
+    
+    
+    
+      const handleEquipmentClick = () => {
         console.log(`Equipment clicked`);
         navigate('/equipmentall');
     };

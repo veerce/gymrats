@@ -65,6 +65,11 @@ const Home = ({ user }) => {
 };
 
 const OccupancyTracker = ({percent, name}) => {
+  const navigate = useNavigate();
+
+  const goToOccupancyPage = () => {
+    navigate("/occupancydetails", { state: { yourData: 123 } });
+  };
 
   return (
     <div id="occupancy_tracker">
@@ -87,7 +92,7 @@ const OccupancyTracker = ({percent, name}) => {
         <div id="gym_name_progressbar">
           {name}
         </div>
-        <div id="view_details" onClick={() => console.log("Viewing Details")}>
+        <div id="view_details" onClick={goToOccupancyPage}>
           View Details
         </div>
       </div>
